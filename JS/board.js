@@ -5,6 +5,7 @@ async function initBoard() {
     checkIfLogged();
     await downloadFromServer();
     await loadTasks();
+    checkProgressBar();
     updateTasksPercent();
     updateToDo();
     updateInProgress();
@@ -12,7 +13,6 @@ async function initBoard() {
     updateDone();
     fillInAssinged();
     fillInCategory();
-    checkProgressBar();
     animateNewTask();
 }
 
@@ -95,7 +95,7 @@ function startDragging(id) {
  * update tasks after dragging
  */
 function endDragging() {
-    checkProgressBar();
+    initBoard();
 }
 
 /**

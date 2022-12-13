@@ -1,4 +1,4 @@
-setURL('https://gruppe-329.developerakademie.net/smallest_backend_ever');
+setURL('https://dennis-frese.developerakademie.net/smallest_backend_ever'); 
 
 /**
  * initialisize content for Index

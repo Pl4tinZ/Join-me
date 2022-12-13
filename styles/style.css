@@ -4,6 +4,20 @@ body {
     font-family: 'Inter', sans-serif!important;
 }
 
+body::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: white;        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: darkgray;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid darkgray;  /* creates padding around scroll thumb */
+  }
+
 .login_section {
     display: flex;
     width: 100vw;
