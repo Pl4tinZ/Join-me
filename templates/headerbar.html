@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        margin: 0;
+    }
+    
+    .headerbar {
+        position: absolute;
+        width: 100%;
+        height: 89px;
+        left: 0px;
+        top: 0px;
+        z-index: 2;
+    }
+    
+    .profilebar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 89px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+        position: fixed;
+        z-index: 1;
+    }
+    
+    .profilebar p {
+        position: absolute;
+        left: 348px;
+        top: 32px;
+        font-size: 21px;
+        color: black;
+        font-weight: 400;
+    }
+    
+    .profile {
+        display: flex;
+        position: absolute;
+        align-items: center;
+        width: 106px;
+        right: 10%;
+        gap: 26px;
+    }
+
+    .profilepicture {
+        position: relative;
+    }
+    
+    .profilepicture img {
+        width: 49px;
+        height: 49px;
+        border-radius: 100%;
+        cursor: pointer;
+    }
+    
+    .profilebar_logo {
+        display: none;
+    }
+    
+    .profile_information {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        background-color: #2A3647;
+        width: 100px;
+        height: 30px;
+        position: absolute;
+        right: 50%;
+        top: 64px;
+        color: white;
+        border-radius: 5px 0 5px 5px;
+    }
+
+    .profile_information a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .profile_information div:hover, a:hover{
+        cursor: pointer;
+        color: #29ABE2;
+    }
+    
+    @media (max-width: 992px) {
+        .add_task_container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .addtask {
+            width: 80%;
+        }
+        .headerbar {
+            position: fixed;
+        }
+        .profilebar {
+            height: 80px;
+            z-index: 4;
+            filter: none !important;
+        }
+        .profilebar p {
+            display: none;
+        }
+        .q_image {
+            display: none;
+        }
+        .profilebar_logo {
+            display: block;
+            width: 32px;
+            position: absolute;
+            left: 5%;
+        }
+        .profile {
+            right: 5%;
+            width: unset;
+        }
+
+        .profile_information {
+        height: 70px;
+        }
+    }
+    
+    @media (max-width: 400px) {
+        .menu {
+            height: 60px;
+        }
+        .dashboard {
+            height: 60px;
+        }
+        .dashboard img {
+            font-size: 12px;
+        }
+        .dashboard span {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<body>
+    <div class="profilebar" id="profilebar">
+        <img class="profilebar_logo" src="img/Capa 1.png">
+        <p>Kanban Project Management Tool</p>
+        <div class="profile">
+            <div class="q_image">
+                <a href="help.html"><img src="img/q-image.png"></a>
+            </div>
+            <div class="profilepicture">
+                <img src="img/profile.png" onclick="openProfilInformationPopUp()">
+                <div class="profile_information d-none" id="profile_information">
+                    <div onclick="logout()">logout</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,110 @@
+/* @media (max-width: 1350px) {
+    .greeting_parent {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 992px) {
+    .summary_content {
+        position: relative;
+        margin: 0;
+        height: calc(100% - 90px);
+        background-color: #F6F7F8;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        top: unset;
+        left: unset;
+        margin-top: 10px;
+    }
+    .summary_header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px;
+    }
+    .summary_header h1 {
+        border: none;
+        margin: 0;
+    }
+    .summary_header h4 {
+        margin: 20px 0;
+        padding: 0;
+    }
+    .mobile_hr {
+        width: 90px;
+        height: 3px !important;
+        background-color: #29ABE2;
+        opacity: 1 !important;
+    }
+    .overview {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .tool_description {
+        display: block;
+        margin: 20px 0;
+    }
+    .tasks_card {
+        width: 170px;
+        height: 110px;
+        padding: 5px 10px;
+        margin-top: 0;
+    }
+    .tasks_card h1 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .tasks_card span {
+        font-size: 14px;
+    }
+    .urgent_card {
+        height: 110px;
+    }
+    .progress_card_parent {
+        height: 110px;
+    }
+    .sum_urgent_parent img {
+        width: 40px;
+    }
+    #urgent {
+        margin-bottom: 0;
+    }
+    .sum_urgent span {
+        font-size: 14px;
+    }
+    .deadline_date {
+        font-size: 16px;
+    }
+    .upcoming_deadline {
+        font-size: 14px;
+    }
+    .progress_card img {
+        width: 40px;
+    }
+    .progress_card h2 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .progress_card span {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 600px) {
+    .overview {
+        width: 363px;
+    }
+    .progress_card {
+        width: 180px;
+    }
+    .tasks_card {
+        width: 110px;
+    }
+}
+
+@media (max-width: 450px) {} */

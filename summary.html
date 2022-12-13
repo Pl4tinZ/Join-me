@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/Capa 1.png">
+    <title>Join</title>
+    <script src="smallest_backend_ever/mini_backend.js"></script>
+    <script src="JS/tasks.js"></script>
+    <script src="JS/register_login.js"></script>
+    <script src="JS/addtask.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/includeHTML.js"></script>
+    <script src="JS/contacts.js"></script>
+    <script src="JS/addcontact.js"></script>
+    <script src="JS/hello.js"></script>
+    <script src="JS/board.js"></script>
+    <script src="JS/summary.js"></script>
+    <script src="JS/categories.js"></script>
+    <script src="JS/global_variables.js"></script>
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/response.css">
+    <link rel="stylesheet" href="styles/taskstyle.css">
+    <link rel="stylesheet" href="styles/menu.css">
+    <link rel="stylesheet" href="styles/summary.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+
+
+    <body onload="includeHTML(), initSummary();">
+        <div w3-include-html="templates/menu.html"></div>
+
+        <div class="summary_content_parent">
+            <div w3-include-html="templates/headerbar.html"></div>
+            <div class="summary_content">
+                <div class="summary_header">
+                    <span class="tool_description">Kanban Project Management Tool</span>
+                    <h1><b>Summary</b></h1>
+                    <h4>Everything in a nutshell!</h4>
+                    <hr class="mobile_hr">
+                </div>
+
+                <div class="overview">
+                    <div class="overview_tasks">
+                        <a href="board.html" class="tasks_card">
+                            <h1 id="tasksInBoard">
+                                5
+                            </h1>
+                            <span>
+                            Tasks in Board
+                        </span>
+                        </a>
+                        <a href="board.html" class="tasks_card">
+                            <h1 id="tasksInProgress">
+                                2
+                            </h1>
+                            <span>
+                            Tasks in Progress
+                        </span>
+                        </a>
+                        <a href="board.html" class="tasks_card">
+                            <h1 id="awaitingFeedback">
+                                2
+                            </h1>
+                            <span>
+                            Awaiting Feedback
+                        </span>
+                        </a>
+                    </div>
+
+
+                    <a href="board.html" class="urgent_card">
+                        <div class="sum_urgent_parent">
+                            <img src="img/urgent_icon.png">
+                            <div class="sum_urgent">
+                                <h2 id="urgent">
+                                    1
+                                </h2>
+                                <span>
+                                Urgent
+                            </span>
+                            </div>
+                        </div>
+                        <div class="date_urgent_parent">
+                            <span class="deadline_date" id="deadlineDate">
+                            October 16, 2022
+                        </span>
+                            <span class="upcoming_deadline">
+                            Upcoming Deadline
+                        </span>
+                        </div>
+                    </a>
+
+                    <div class="progress_card_parent">
+                        <a href="board.html" class="progress_card">
+                            <img src="img/to-do_icon.png">
+                            <div class="progress_child">
+                                <h2 id="toDo">
+                                    1
+                                </h2>
+                                <span>
+                                To-do
+                            </span>
+                            </div>
+                        </a>
+                        <a href="board.html" class="progress_card">
+                            <img src="img/done_icon.png">
+                            <div class="progress_child">
+                                <h2 id="done">
+                                    1
+                                </h2>
+                                <span>
+                                Done
+                            </span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="greeting_parent">
+            <span class="greeting" id="dayTime">Good morning,</span>
+            <span class="greeting_name" id="greeting_Name">Sofia Müller</span>
+        </div>
+
+    </body>
+
+</html>

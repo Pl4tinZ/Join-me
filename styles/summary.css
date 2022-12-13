@@ -1,0 +1,445 @@
+html {
+    background-color: #F6F7F8;
+}
+
+body {
+    font-family: 'Inter', sans-serif!important;
+    display: flex;
+    height: 100vh;
+}
+
+.dFlex {
+    display: flex;
+}
+
+.summary_content_parent {
+    position: relative;
+    background-color: #F6F7F8;
+    width: 100%;
+    height: 100%;
+}
+
+.summary_content {
+    margin-left: 330px;
+    margin-top: 172px;
+    background-color: #F6F7F8;
+}
+
+.summary_header {
+    display: flex;
+    align-items: center;
+}
+
+.summary_header h1 {
+    padding-right: 30px;
+    border-right: 3px solid #29ABE2;
+}
+
+.summary_header h4 {
+    padding-left: 30px;
+}
+
+.overview {
+    width: 580px;
+    padding: 16px;
+}
+
+.overview_tasks {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tasks_card {
+    text-decoration: none;
+    color: black;
+    width: 170px;
+    height: 170px;
+    border-radius: 30px;
+    background-color: white;
+    margin-top: 87px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 21px 41px;
+    text-align: center;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.tasks_card h1 {
+    font-size: 64px;
+    font-weight: 600px;
+}
+
+.tasks_card span {
+    font-size: 21px;
+    font-weight: 400px;
+}
+
+.tasks_card:hover {
+    background-color: #2A3647;
+    color: white;
+    transition: all 125ms ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.urgent_card {
+    text-decoration: none;
+    color: black;
+    height: 150px;
+    background-color: white;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.sum_urgent_parent {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 45%;
+    border-right: 2px solid #D1D1D1;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.sum_urgent {
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.sum_urgent h2 {
+    font-size: 47px;
+    font-weight: 600;
+}
+
+.sum_urgent span {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.date_urgent_parent {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    width: 55%;
+}
+
+.deadline_date {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.upcoming_deadline {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.urgent_card:hover {
+    background-color: #2A3647;
+    color: white;
+    transition: all 125ms ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress_card_parent {
+    height: 150px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.progress_card {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    width: 272px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.progress_child {
+    padding-left: 18px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    text-align: center;
+}
+
+.progress_card:hover {
+    background-color: #2A3647;
+    color: white;
+    transition: all 125ms ease-in-out;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.progress_child h2 {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+.progress_child span {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.greeting_parent {
+    position: absolute;
+    top: 520px;
+    left: calc(232px + 123px + 580px);
+    display: flex;
+    flex-direction: column;
+    margin-left: 67px;
+}
+
+.greeting {
+    font-size: 47px;
+    font-weight: 500;
+    color: #2A3647;
+}
+
+.greeting_name {
+    font-size: 64px;
+    font-weight: 700;
+    color: #29ABE2;
+}
+
+.tool_description {
+    display: none;
+}
+
+
+/* ---------------------- Summary Start ---------------------- */
+
+@media (max-width: 1350px) {
+    .greeting_parent {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {}
+
+@media (max-width: 992px) {
+    .summary_content {
+        position: relative;
+        margin: 80px 0 0 20px;
+        height: calc(100% - 90px - 79px);
+        background-color: #F6F7F8;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        top: unset !important;
+        left: unset;
+        overflow-y: scroll;
+    }
+    .summary_header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px;
+    }
+    .summary_header h1 {
+        border: none;
+        margin: 0;
+    }
+    .summary_header h4 {
+        margin: 20px 0;
+        padding: 0;
+    }
+    .mobile_hr {
+        width: 90px;
+        height: 3px !important;
+        background-color: #29ABE2;
+        opacity: 1 !important;
+    }
+    .overview {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 30px;
+    }
+    .tool_description {
+        display: block;
+        margin: 20px 0;
+    }
+    .tasks_card {
+        width: 170px;
+        height: 110px;
+        padding: 5px 10px;
+        margin-top: 0;
+    }
+    .tasks_card h1 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .tasks_card span {
+        font-size: 14px;
+    }
+    .urgent_card {
+        height: 110px;
+    }
+    .progress_card_parent {
+        height: 110px;
+    }
+    .sum_urgent_parent img {
+        width: 40px;
+    }
+    #urgent {
+        margin-bottom: 0;
+    }
+    .sum_urgent span {
+        font-size: 14px;
+    }
+    .deadline_date {
+        font-size: 16px;
+    }
+    .upcoming_deadline {
+        font-size: 14px;
+    }
+    .progress_card img {
+        width: 40px;
+    }
+    .progress_card h2 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .progress_card span {
+        font-size: 14px;
+    }
+}
+
+@media (max-height: 900px) {
+
+    .summary_content {
+        top: 70px;
+    }
+
+    .summary_header {
+        margin: 0 20px 0 20px;
+    }
+
+    .tasks_card {
+        margin-top: 16px;
+    }
+
+    .overview {
+        margin-top: 0;
+        padding: 0 16px 0 16px;
+    }
+
+    .progress_card_parent {
+        margin-top: 16px;
+    }
+}
+
+@media (max-height: 800px) {
+
+    
+
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 600px) {
+
+    .overview {
+        width: 363px;
+    }
+    .progress_card {
+        width: 180px;
+    }
+    .tasks_card {
+        width: 100px;
+    }
+
+    .progress_card {
+        width: 160px;
+    }
+
+    .tool_description {
+        margin: 14px 0;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .tool_description {
+        font-size: 14px;
+    }
+
+    .summary_header h4 {
+        font-size: 18px;
+    }
+
+    .overview {
+        width: 90%;
+    }
+
+    .tasks_card {
+        width: 30%;
+        justify-content: center;
+        height: 84px;
+    }
+
+    .progress_card {
+        width: 45%;
+        height: 100px;
+    }
+
+    .tasks_card h1 {
+        font-size: 24px;
+    }
+
+    .tasks_card span {
+        font-size: 12px;
+    }
+
+    .urgent_card {
+        margin-top: 16px;
+    }
+
+    .sum_urgent_parent img {
+        width: 30px;
+    }
+
+    .sum_urgent h2 {
+        font-size: 30px;
+    }
+
+    .sum_urgent span {
+        font-size: 12px;
+    }
+
+    .sum_urgent {
+        padding-left: 10px;
+    }
+
+    .upcoming_deadline  {
+        font-size: 12px;
+    }
+
+    .progress_card img {
+        width: 30px;
+    }
+
+    .progress_card h2 {
+        font-size: 30px;
+    }
+
+    .progress_card span {
+        font-size: 12px;
+    }
+
+    .progress_child {
+        padding-left: 10px;
+    }
+}

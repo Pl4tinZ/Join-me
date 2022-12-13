@@ -1,0 +1,95 @@
+.help_page {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background-color: #f6f7f8;
+}
+
+.help_container {
+    padding: 150px 150px 150px 300px;
+}
+
+.help_container h1 {
+    font-size: 61px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.help_one {
+    margin: 24px 0;
+    font-size: 27px;
+    font-weight: 700;
+    color: #000000;
+}
+
+.help_one h2 {
+    margin-bottom: 16px;
+    color: black;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+}
+
+.help_one p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+}
+
+.menu {
+    position: absolute;
+    z-index: 3;
+}
+
+.arrow_back {
+    position: absolute;
+    top: 172px;
+    right: 128px;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.help_two {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.help_two p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+    font-style: normal;
+    margin-left: 40px;
+}
+
+.help_two h2 {
+    height: 32px;
+    color: black;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 27px;
+    line-height: 120%;
+}
+
+@media (max-width: 992px) {
+    .help_container {
+        padding: 150px;
+    }
+}
+
+@media (max-width: 768px) {
+    .help_container {
+        padding: 150px 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .help_container {
+        padding: 150px 20px;
+    }
+}

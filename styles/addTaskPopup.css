@@ -1,0 +1,170 @@
+.addtask_popup_window {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+
+.addtask_popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    transform: translateX(100vw);
+}
+
+.addtask_popup h1 {
+    width: 466px;
+    height: 78px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 61px;
+    line-height: 120%;
+    color: black;
+    margin-left: 122px;
+    margin-top: 100px;
+}
+
+.tasks_popup {
+    position: relative;
+}
+
+.popup_window_slidein {
+    animation: slidein 0.3s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.3s;
+}
+
+.popup_window_slideout {
+    animation: slideout 0.3s;
+    animation-delay: 0.3s;
+}
+
+@keyframes slideout {
+    from {
+        transform: translateX(0vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+@keyframes slidein {
+    from {
+        transform: translateX(100vw);
+    }
+    to {
+        transform: translateX(0vw);
+    }
+}
+
+.tasks_popup {
+    width: 1116px;
+    height: 880px;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.tasks_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@media (max-width: 1350px) {}
+
+@media (max-width: 1200px) {
+
+    .tasks_popup {
+        width: 950px;
+    }
+
+}
+
+@media (max-width: 992px) {
+
+    .tasks_popup {
+        width: 100% !important;
+        height: calc(100vh - 160px) !important;
+        margin-bottom: 80px;
+        margin-top: 80px;
+        overflow-y: scroll;
+        border-radius: 0;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4) inset;
+        top: 0;
+        left: 0;
+        transform: unset;
+    }
+
+    .tasks_content {
+        flex-direction: column;
+        padding: 0 110px;
+    }
+
+    .addtask_popup h1 {
+        width: unset;
+      }
+
+}
+
+@media (max-width: 768px) {}
+
+@media (max-width: 600px) {
+
+    .tasks_content {
+        padding: 0 50px;
+    }
+
+    .addtask_popup h1 {
+        margin-left: 50px !important;
+    }
+
+}
+
+@media (max-width: 400px) {
+
+    .addtask_popup h1 {
+        font-size: 40px;
+    }
+
+    .tasks_popup {
+        margin-bottom: 60px;
+        height: calc(100vh - 140px) !important;
+    }
+
+}
+
+@media (max-height: 900px) {
+
+    .tasks_popup {
+        height: 780px;
+    }
+
+    .margin-top50 {
+        margin-top: 0;
+      }
+
+}
+
+@media (max-height: 800px) {
+
+    .tasks_popup {
+        height: 680px;
+    }
+
+    .addtask_popup h1 {
+        margin-left: 110px;
+        margin-top: 50px;
+    }
+
+}
+
+@media (max-width: 450px) {}
