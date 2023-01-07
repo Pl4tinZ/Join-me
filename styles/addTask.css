@@ -766,6 +766,7 @@
         display: block;
         font-size: 16px;
         width: 80%;
+        margin: 16px 0 16px 0;
     }
     .add_task_container {
         position: unset;

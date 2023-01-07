@@ -128,6 +128,8 @@ function openPopUp(id) {
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
     checkMediaforBoard(mediaforBoard);
     fillInTaskAssignPopup(id);
+    fillInCategoryColorPopup(id);
+    fillInSubtasksPopup(id);
 }
 
 /**
@@ -147,6 +149,7 @@ function openPopUpEdit(id) {
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
     renderEditTaskCard(id);
+    renderAllProgressTaskCard(id);
     visualAssignedPersonEdit(id);
 }
 
@@ -170,6 +173,61 @@ async function fillInCategory() {
             }
         }
     }
+}
+
+async function fillInCategoryColorPopup(id) {
+    await loadCategories();
+    let categoryContainer = document.querySelector('.categorycard');
+    let category = tasks[id]['category'];
+
+    for (let j = 0; j < categories.length; j++) {
+        const element = categories[j];
+        if (category == element[['name']]) {
+            let color = element['color'];
+            categoryContainer.style.backgroundColor = color;
+        }
+    }
+}
+
+function fillInSubtasksPopup(id) {
+    let subtasks = tasks[id]['subTask'];
+    let checkedSubtasks = tasks[id]['checkedSubtask'];
+    let subtaskContainer = document.getElementById('subtasks_popup');
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopup(i, id, subtask);
+    }
+    for (let i = 0; i < checkedSubtasks.length; i++) {
+        const checkedSubtask = checkedSubtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupChecked(i, id, checkedSubtask);
+    }
+    let checkedElements = document.querySelectorAll('.checked');
+    for (let i = 0; i < checkedElements.length; i++) {
+        const element = checkedElements[i];
+        element.checked = true;
+    }
+} // subtasks wird jetzt richtig angezeigt und läuft. jetzt noch in der edit einstellen.
+
+function checkSubtask(i, id) { // id is task // i ist position of subtask in array 
+    let checkbox = document.getElementById(`subtask_input${i}`);
+    if (checkbox.checked) {
+
+    }
+}
+
+function wiggleEditBtn() {
+    document.querySelector('.edit_btn').animate(
+        [
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.1)' },
+            { transform: 'scale(1)' }
+        ],
+        {
+            duration: 200,
+            iterations: 3,
+            direction: 'alternate'
+        }
+    );
 }
 
 /**
@@ -232,6 +290,25 @@ function fillInTaskAssignPopup(id) {
         let fullName = tasks[id]['assignet'][i];
         taskAssign.innerHTML += assignPopupHtml(initials, fullName);
     }
+}
+
+/**
+ * render all progress to change in select tag
+ */
+function renderAllProgressTaskCard() {
+    let select = document.getElementById('change_progress');
+    select.innerHTML = '';
+    select.innerHTML += changeProgressHtml();
+}
+
+/**
+ * - change progress without drag & drop
+ * @param {number} id - position in Array tasks
+ */
+function changeProgress(id) {
+    let select = document.getElementById('change_progress');
+    let task = tasks[id];
+    task['progress'] = select.value;
 }
 
 /**

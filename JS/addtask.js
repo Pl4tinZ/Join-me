@@ -96,6 +96,7 @@ async function createTask() {
             "dueDate": date.value,
             "prio": prio,
             "subTask": subtask,
+            "checkedSubtask": [],
             "tasksOverall": 3,
             "tasksDone": 0,
             "tasksPercent": '',

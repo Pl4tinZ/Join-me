@@ -1,0 +1,7 @@
+
+create task auf handy scrollbar ???  bei contacts sobald man bei untersuchen über den slidein container hovert
+contact information nochmal mit figma verleichen
+subtask sind für leisten gedacht
+subtasks in task details einfügen mit kontrollkästchen
+landscape modus handy bedenken
+success animation in mobile mode not work

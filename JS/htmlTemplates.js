@@ -324,8 +324,12 @@ function popUpContent(id) {
                  <!-- JAVASCRIPT fillInTaskAssignPopup   -->
             </div>
         </div>
+        <div class="subtasks_popup" id="subtasks_popup">
+            <h2>Subtasks:</h2>
+            <!-- JAVASCRIPT fillInSubtasksPopup   -->
+        </div>
         <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
-            <img src="img/edit button.png">
+            <img class="edit_btn" src="img/edit button.png">
         </div>
         <div class="delete_task">
             <hr>
@@ -333,6 +337,22 @@ function popUpContent(id) {
         </div>
     </div>
     `;
+}
+
+function subTaksContentPopup(i, id, subtask) { // checkSubtask(${i, id})
+    return /*html*/`
+    <div id="subtask${i}">
+        <input id="subtask_input${i}" type="checkbox" onclick="wiggleEditBtn(); return false"> 
+        <span>${subtask}</span>
+    </div>`
+}
+
+function subTaksContentPopupChecked(i, id, checkedSubtask) {
+    return /*html*/`
+    <div id="checkedSubtask${i}">
+        <input class="checked" id="checked_subtask_input${i}" type="checkbox" onclick="wiggleEditBtn(); return false"> 
+        <span>${checkedSubtask}</span>
+    </div>`
 }
 
 /**
@@ -394,6 +414,14 @@ function popUpEditContent(id) {
                 <div onclick="changeLow(${id})"><img src="img/lowbuttonwhite.png" id="lowimg"></div>
             </div>
         </div>
+        <div class="change_progress_container">
+            <div class="task_popup_window_2_container task_popup_window_2_progress">
+                <h3>Change progress</h3>
+                <select id="change_progress" class="change_progess_select" onchange='changeProgress(${id})'>
+                    <!-- JAVASCRIPT renderAllProgressTaskCard -->
+                </select>
+            </div>
+        </div>
         <div class="task_popup_window_2_assign task_popup_window_2_container">
             <h3>Assigned to</h3>
             <select class="select_assign" id="select_assign_edit" onchange="addAssignEdit(${id})">
@@ -414,6 +442,14 @@ function popUpEditContent(id) {
         </div>
     </div>
     `;
+}
+
+function changeProgressHtml() {
+    return /*html*/`
+    <option value="toDo">To do</option>
+    <option value="inProgress">In progress</option>
+    <option value="awaitingFeedback">Awaiting feedback</option>
+    <option value="done">Done</option>`
 }
 
 /**

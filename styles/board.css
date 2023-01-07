@@ -164,10 +164,7 @@ html {
 .card_category {
     font-size: 16px;
     color: white;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding: 5px 25px;
     border-radius: 8px;
     margin-bottom: 20px;
     background-color: orange;
@@ -320,6 +317,9 @@ html {
     .board_column img {
         width: 20px;
     }
+    .card_category {
+        padding: 5px 8px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -362,8 +362,12 @@ html {
     .board_column img {
         width: 30px;
     }
+    .board_headline {
+        max-width: 345px;
+    }
     .board_column_headline {
         font-size: 21px;
+        max-width: 245px;
     }
 }
 
