@@ -121,6 +121,21 @@ function showFullContactInfo(i) {
 }
 
 /**
+ * - show full contact info in mobile version
+ * @param {number} i - number of position in contacts Array
+ */
+function showFullContactInfoMobile(i) {
+    if(mediaforBoard.matches) {
+        let contactInfoContainer = document.getElementById('cotact_info_mobile');
+        let editBtn = document.getElementById('edit_btn');
+        contactInfoContainer.classList.remove('d-none');
+        contactInfoContainer.innerHTML = '';
+        contactInfoContainer.innerHTML = contactInfoMobile(i);
+        editBtn.src = 'img/edit button.png';
+    }
+}
+
+/**
  * generate color for contact profile picture
  * @param {string} initials - initials from contact
  * @returns - generated color

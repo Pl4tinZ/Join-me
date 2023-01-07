@@ -25,7 +25,7 @@ async function renderAddTask() {
  * add a person to the task 
  * @param {number} i - position in contatcs Array
  */
-function addAssign() {
+function addAssign(i) {
     let option = document.getElementById('select_assign');
     if(!assignedPersons.includes(option.value)){
         assignedPersons.push(option.value);
@@ -277,9 +277,9 @@ function clearAddTask() {
 function checkMediaforBoard(mediaforBoard) {
     if (document.querySelector('.board_content')) {
         if (mediaforBoard.matches) {
-                document.querySelector('.board_content').classList.add('dNone');
+                document.querySelector('.board_content').classList.add('d-none');
             } else {
-                document.querySelector('.board_content').classList.remove('dNone');
+                document.querySelector('.board_content').classList.remove('d-none');
             }
     }
 }
@@ -341,6 +341,24 @@ async function getNewCategory() {
         "color": color.value,
     })
     saveCategories();
+}
+
+function deleteTask(id) {
+    tasks.splice(id, 1);
+    saveTasks();
+    closePopUp();
+    initBoard();
+}
+
+function getPositionInTaks(id) {
+    let position;
+    for (let i = 0; i < tasks.length; i++) {
+        const task = tasks[i];
+        if (task['id'] == id) {
+            position = i;
+        }
+    }
+    return position;
 }
 
 /**

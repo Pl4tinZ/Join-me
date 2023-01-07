@@ -62,12 +62,6 @@ body::-webkit-scrollbar {
     padding: 16px;
 }
 
-.sign_up:hover {
-    background-color: #29ABE2;
-    transition: all 75ms ease-in-out;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
-}
-
 .login_window {
     background-color: white;
     width: 652px;
@@ -305,11 +299,14 @@ body::-webkit-scrollbar {
 }
 
 .signup_button:hover,
+.sign_up:hover,
 .forgot_button:hover,
-.continue_button:hover {
+.continue_button:hover,
+.login_button:hover,
+.guest_login_button:hover {
     background-color: #29ABE2;
-    transition: all 75ms ease-in-out;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.3);
+    transition: all 125ms ease-in-out;
+    outline: none;
 }
 
 .forgot_button {

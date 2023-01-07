@@ -1,8 +1,10 @@
 /**
  * - render summary page
  */
-function initSummary() {
+async function initSummary() {
     checkIfLogged();
+    await downloadFromServer();
+    loadTasks();
     showNumberOfTasks();
     showNumberOfTasksAwaitingFeedback();
     showNextCardAwaiting();
@@ -41,7 +43,7 @@ function replaceDayTimeSummary() {
  * @param {string} activeUser - logged user
  */
 function replaceNameSummary(activeUser) {
-    document.getElementById('greeting_Name').innerHTML = activeUser;
+    document.getElementById('greeting_Name').innerHTML = activeUser[0].toUpperCase() + activeUser.substring(1);
 }
 
 /**

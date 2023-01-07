@@ -121,7 +121,9 @@ function drop(progress) {
  * @param {number} id - number of position of task in array, tasks
  */
 function openPopUp(id) {
-    document.getElementById('popUpArea').classList.remove('dNone');
+    id = getPositionInTaks(id);
+    document.getElementById('popUpArea').classList.remove('d-none');
+    document.getElementById('boardContentParent').classList.add('hidden');
     document.getElementById('popUpArea').innerHTML = '';
     document.getElementById('popUpArea').innerHTML = popUpContent(id);
     checkMediaforBoard(mediaforBoard);
@@ -132,8 +134,9 @@ function openPopUp(id) {
  * close popup of task
  */
 function closePopUp() {
-    document.getElementById('popUpArea').classList.add('dNone');
-    document.querySelector('.board_content').classList.remove('dNone');
+    document.getElementById('popUpArea').classList.add('d-none');
+    document.querySelector('.board_content').classList.remove('d-none');
+    document.getElementById('boardContentParent').classList.remove('hidden');
 }
 
 /**
@@ -155,16 +158,15 @@ async function fillInCategory() {
     let categoryContainer;
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
-        if (document.getElementById(`cardCategory${i}`)) {
-            categoryContainer = document.getElementById(`cardCategory${i}`);
-            let category = tasks[i]['category'];
+        let id = task['id'];
+        let category = task['category'];
+        categoryContainer = document.getElementById(`cardCategory${id}`);
 
-            for (let j = 0; j < categories.length; j++) {
-                const element = categories[j];
-                if (category == element[['name']]) {
-                    let color = element['color'];
-                    categoryContainer.style.backgroundColor = color;
-                }
+        for (let j = 0; j < categories.length; j++) {
+            const element = categories[j];
+            if (category == element[['name']]) {
+                let color = element['color'];
+                categoryContainer.style.backgroundColor = color;
             }
         }
     }
@@ -196,16 +198,27 @@ function clearInitialContainerTaskPopup() {
  */
 function fillInAssinged() {
     clearInitialContainer();
-    for (let i = 0; i < tasks.length; i++) {
+    let highestId = getHighestId();
+    for (let i = 0; i <= highestId; i++) {
+        let ArrPosition = getPositionInTaks(i);
         if (document.getElementById(`${i}`)) {
             let taskContainer = document.getElementById(`${i}`);
             let initialsContainer = taskContainer.children[4].children[0];
-            for (let j = 0; j < tasks[i]['initials'].length; j++) {
-                let initials = tasks[i]['initials'][j];
+            for (let j = 0; j < tasks[ArrPosition]['initials'].length; j++) {
+                let initials = tasks[ArrPosition]['initials'][j];
                 initialsContainer.innerHTML += assignHtml(j, initials);
             }
         }
     }
+}
+
+function getHighestId() {
+    let ids = [];
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i]['id'];
+        ids.push(element);
+    }
+    return (Math.max(...ids))
 }
 
 /**
@@ -240,12 +253,28 @@ function renderEditTaskCard() {
  * @param {number} i - number of position of task in array, tasks
  */
 function addAssignEdit(i) {
-    let option = document.getElementById(`option${i}`);
+    let option = document.getElementById('select_assign_edit');
 
-    if (!assignedPersons.includes(option.innerHTML)) {
-        assignedPersons.push(option.innerHTML);
+    if (!assignedPersons.includes(option.value)) {
+        let initials = getInitialsFromFullName(option.value);
+        assignedPersons.push(option.value);
+        tasks[i]['assignet'].push(option.value);
+        tasks[i]['initials'].push(initials);
         visualAssignedPersonEdit(i);
     }
+} // 111 HIER NOCH WEITER MACHEN ASSIGNED FUNKTIONIERT NICHT
+
+/**
+ * get the initials from a full name
+ * @param {string} fullName - full name of contact
+ * @returns - iniials from contact
+ */
+function getInitialsFromFullName(fullName) {
+    let arr = fullName.split(" ");
+    let firstName = arr[0].charAt(0);
+    let secondName = arr[1].charAt(0);
+    let initials = firstName + secondName;
+    return initials;
 }
 
 /**
@@ -343,6 +372,7 @@ function saveChanges(id) {
     element['description'] = document.getElementById(`description${id}`).value;
     element['dueDate'] = document.getElementById(`dueDate${id}`).value;
 
+
     if (urgent == true) {
         element['prio'] = 'urgent';
     }
@@ -410,8 +440,9 @@ async function animateNewTask() {
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
+        let page = document.getElementById('boardContentParent');
         id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
-        let task = document.getElementById(`${id}`);
+        window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
         setTimeout(() => {
             taskContainer.classList.add('new-task');
         }, "800");

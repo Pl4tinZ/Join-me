@@ -33,6 +33,41 @@ function contactInfo(i) {
         </div>`;
 }
 
+
+function contactInfoMobile(i) {
+    let contact = contacts[i];
+
+    return /*html*/`
+    <span class="tool_description">Kanban Project Management Tool</span>
+    <div class="contact_headline"><h1>Contacts</h1></div>
+    <div class="subline">
+        <span>Better with a team</span>
+        <img src="img/underline.png">
+    </div>
+    <div class="full_contact_info">
+        <h2 style="background-color:${getColorForName(contact['initials'])}">${contact['initials']}</h2>
+        <div class="contact_info_add_task">
+            <h1>${contact['first_name']} ${contact['second_name']}</h1>
+            <p onclick="openAddTaskPopup('toDo')" style="cursor: pointer;">+ Add Task</p>
+        </div>
+    </div>
+    <div class="contact_information_header">
+        <h2>Contact Information</h2>
+        <div class="edit_contact" onclick="editContactPopup('${contact['first_name']}', '${contact['second_name']}', '${contact['email']}', '${contact['phone']}', '${i}')">
+            <img id="edit_btn" src="img/edit button.png">
+            <p>Edit Contact</p>
+        </div>
+    </div>
+    <div class="contact_information">
+        <h2>Email</h2>
+        <a href="#">
+            <p>${contact['email']}</p>
+        </a>
+        <h2>Phone</h2>
+        <p>${contact['phone']}</p>
+    </div>`;    
+}
+
 /**
  * renders contact where no second contact exists with the same initial letter
  * @param {number} i - number of position in array, contacs
@@ -49,7 +84,7 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
         </div>
         <div id="${firstsecondnameLetter}">
             <div class="full_listner">
-                <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+                <div class="contact_name_container" onclick="showFullContactInfo(${i}); showFullContactInfoMobile(${i});">
                     <span style="background-color:${getColorForName(initials)}">${initials}</span>
                     <div class="contact_name">
                     <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
@@ -72,7 +107,7 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
 function letterAlreadyExist(i, initials) {
     return /*html*/`
     <div class="full_listner">
-        <div class="contact_name_container" onclick="showFullContactInfo(${i})">
+        <div class="contact_name_container" onclick="showFullContactInfo(${i}); showFullContactInfoMobile(${i});">
             <span style="background-color:${getColorForName(initials)}">${initials}</span>
             <div class="contact_name">
             <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
@@ -103,7 +138,7 @@ function displayContactsforInput(contact, i) {
  * @returns - HTML
  */
 function displayCategoriesForInput(category) {
-    return /*html*/`<option onclick="checkCategory()">${category}</option>`
+    return /*html*/`<option>${category}</option>`
 }
 
 /**
@@ -145,7 +180,7 @@ function addTaskPopupWindowContent() {
             <div class="margin-top50">
                 <p>Category</p>
             </div>
-            <select class="select_task" id="category" placeholder="Select task category" required>
+            <select class="select_task" id="category" placeholder="Select task category" required onchange="checkCategory()">
                 <!-- JAVASCRIPT -->
             </select>
             <div class="new_category_container dNone" id="new_category_container">
@@ -292,6 +327,10 @@ function popUpContent(id) {
         <div onclick="openPopUpEdit(${id})" class="edit_button_dragcard_popup">
             <img src="img/edit button.png">
         </div>
+        <div class="delete_task">
+            <hr>
+            <span onclick="deleteTask(${id})">Delete task</span>
+        </div>
     </div>
     `;
 }
@@ -357,7 +396,7 @@ function popUpEditContent(id) {
         </div>
         <div class="task_popup_window_2_assign task_popup_window_2_container">
             <h3>Assigned to</h3>
-            <select class="select_assign" id="select_assign_edit">
+            <select class="select_assign" id="select_assign_edit" onchange="addAssignEdit(${id})">
                 <!-- JAVASCRIPT renderEditTaskCard -->
             </select>
             <div class="visual_assign" id="visual_assign_edit">
@@ -384,7 +423,7 @@ function popUpEditContent(id) {
  * @returns - HTML
  */
 function editTaskSelectHtml(contact, i) {
-    return /*html*/`<option value="" onclick="addAssignEdit(${i})" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
+    return /*html*/`<option value="${contact['first_name']} ${contact['second_name']}" id="option${i}"><div class="test">${contact['first_name']} ${contact['second_name']}</div></option>`
 }
 
 /**

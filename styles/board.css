@@ -151,6 +151,7 @@ html {
     max-width: 250px;
     background-color: white;
     border-radius: 30px;
+    border: solid 1px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     padding-top: 18px;
     padding-bottom: 18px;
@@ -272,15 +273,32 @@ html {
 }
 
 .pop_up_area {
-    position: absolute;
-    top: 20px;
+    position: fixed;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
     z-index: 4;
 }
 
 .new-task {
     animation: wiggle 1.5s linear;
+}
+
+.delete_task {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.delete_task  hr{
+    width: 70%;
+    color: red;
+}
+
+.delete_task span {
+    color: red;
+    cursor: pointer;
 }
 
 
@@ -310,7 +328,7 @@ html {
     }
     .tool_description {
         display: block;
-        padding: 0 50px;
+        padding: 15px 50px;
         font-size: 16px;
     }
 }
@@ -349,6 +367,26 @@ html {
     }
 }
 
+@media (max-height: 850px) {
+    .dragcard_popup, .task_popup_window_2 {
+        height: 700px !important;
+        overflow: scroll;
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+        height: 100%;
+    }
+
+    .dragcard_popup::-webkit-scrollbar, .task_popup_window_2::-webkit-scrollbar {
+        display: none;
+    }
+
+    .task_popup_window_2 {
+        justify-content: flex-start;
+    }
+}
+
 @media (max-height: 768px) {
     .board_content {
         margin-top: 30px;
@@ -356,6 +394,14 @@ html {
     .board_overview {
         margin-top: 80px;
         height: calc(100vh - 50px - 81.2px - 30px - 89px);
+    }
+    .dragcard_popup, .task_popup_window_2 {
+        height: 530px !important;
+    }
+
+    .headerdescription h1 {
+        height: unset;
+        font-size: 42px;
     }
 }
 

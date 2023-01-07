@@ -9,7 +9,7 @@
     width: 623px;
     height: 824px;
     background: #FFFFFF;
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
     border-radius: 30px;
 }
 
@@ -338,7 +338,6 @@
 
 @media (max-width: 992px) {
     .pop_up_area{
-        height: 100vh;
         top: 0;
         right: 0;
         left: 0;
@@ -348,6 +347,7 @@
 
     .board_content {
         position: unset;
+        margin-top: 24px;
     }
 
     .dragcard_popup {
@@ -376,6 +376,10 @@
         border-radius: 0;
         margin-bottom: 80px;
         background-color: #F6F7F8;
+    }
+
+    .dragcard_popup, .task_popup_window_2 {
+        box-shadow: unset;
     }
 }
 
@@ -409,6 +413,7 @@
 
     .dragcard_popup_frame_2 img {
         height: 35px;
+        width: 100px;
     }
 
     .dragcard_popup_frame_4 {
