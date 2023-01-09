@@ -22,8 +22,9 @@ async function initBoard() {
 function updateTasksPercent() {
     for (let i = 0; i < tasks.length; i++) {
         let element = tasks[i];
+        let allTasks = element['subTask'].length + element['checkedSubtask'].length;
         element['tasksPercent'] = '';
-        element['tasksPercent'] = element['tasksDone'] / element['tasksOverall'] * 100;
+        element['tasksPercent'] = element['checkedSubtask'].length / allTasks * 100;
     }
 }
 
@@ -37,7 +38,8 @@ function updateToDo(filteredTasks) {
     document.getElementById('toDo').innerHTML = '';
     for (let i = 0; i < todos.length; i++) {
         let element = todos[i];
-        document.getElementById('toDo').innerHTML += cardContent(element);
+        let allTasks = element['subTask'].length + element['checkedSubtask'].length;
+        document.getElementById('toDo').innerHTML += cardContent(element, allTasks);
     }
 }
 
@@ -51,7 +53,8 @@ function updateInProgress(filteredTasks) {
     document.getElementById('inProgress').innerHTML = '';
     for (let i = 0; i < inProgress.length; i++) {
         let element = inProgress[i];
-        document.getElementById('inProgress').innerHTML += cardContent(element);
+        let allTasks = element['subTask'].length + element['checkedSubtask'].length;
+        document.getElementById('inProgress').innerHTML += cardContent(element, allTasks);
     }
 }
 
@@ -65,7 +68,8 @@ function updateAwaitingFeedback(filteredTasks) {
     document.getElementById('awaitingFeedback').innerHTML = '';
     for (let i = 0; i < awaitingFeedbacks.length; i++) {
         let element = awaitingFeedbacks[i];
-        document.getElementById('awaitingFeedback').innerHTML += cardContent(element);
+        let allTasks = element['subTask'].length + element['checkedSubtask'].length;
+        document.getElementById('awaitingFeedback').innerHTML += cardContent(element, allTasks);
     }
 }
 
@@ -79,7 +83,8 @@ function updateDone(filteredTasks) {
     document.getElementById('done').innerHTML = '';
     for (let i = 0; i < dones.length; i++) {
         let element = dones[i];
-        document.getElementById('done').innerHTML += cardContent(element);
+        let allTasks = element['subTask'].length + element['checkedSubtask'].length;
+        document.getElementById('done').innerHTML += cardContent(element, allTasks);
     }
 }
 
@@ -151,6 +156,7 @@ function openPopUpEdit(id) {
     renderEditTaskCard(id);
     renderAllProgressTaskCard(id);
     visualAssignedPersonEdit(id);
+    fillInSubtasksPopupEdit(id);
 }
 
 /**
@@ -195,23 +201,36 @@ function fillInSubtasksPopup(id) {
     let subtaskContainer = document.getElementById('subtasks_popup');
     for (let i = 0; i < subtasks.length; i++) {
         const subtask = subtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopup(i, id, subtask);
+        subtaskContainer.innerHTML += subTaksContentPopup(i, subtask);
     }
     for (let i = 0; i < checkedSubtasks.length; i++) {
         const checkedSubtask = checkedSubtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopupChecked(i, id, checkedSubtask);
+        subtaskContainer.innerHTML += subTaksContentPopupChecked(i, checkedSubtask);
     }
+    checkTheCheckbox();
+}
+
+function fillInSubtasksPopupEdit(id) {
+    let subtasks = tasks[id]['subTask'];
+    let checkedSubtasks = tasks[id]['checkedSubtask'];
+    let subtaskContainer = document.getElementById('subtasks_popup_edit');
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupEdit(i, subtask);
+    }
+    for (let i = 0; i < checkedSubtasks.length; i++) {
+        const checkedSubtask = checkedSubtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupCheckedEdit(i, checkedSubtask);
+    }
+    checkTheCheckbox();
+}
+
+function checkTheCheckbox() {
     let checkedElements = document.querySelectorAll('.checked');
+
     for (let i = 0; i < checkedElements.length; i++) {
         const element = checkedElements[i];
         element.checked = true;
-    }
-} // subtasks wird jetzt richtig angezeigt und läuft. jetzt noch in der edit einstellen.
-
-function checkSubtask(i, id) { // id is task // i ist position of subtask in array 
-    let checkbox = document.getElementById(`subtask_input${i}`);
-    if (checkbox.checked) {
-
     }
 }
 
@@ -339,7 +358,7 @@ function addAssignEdit(i) {
         tasks[i]['initials'].push(initials);
         visualAssignedPersonEdit(i);
     }
-} // 111 HIER NOCH WEITER MACHEN ASSIGNED FUNKTIONIERT NICHT
+}
 
 /**
  * get the initials from a full name
@@ -423,6 +442,7 @@ function changeLow() {
  */
 async function popUpEditSave(id) {
     saveChanges(id);
+    saveSubtasks(id);
     successAnimationEditTaskPopup();
     await saveTasks();
     initBoard();
@@ -439,6 +459,35 @@ function successAnimationEditTaskPopup() {
     };
 }
 
+function saveSubtasks(id) {
+    let task = tasks[id];
+    let subtasks = task['subTask'];
+    let checkedSubtasks = task['checkedSubtask'];
+    let subtasksLength = subtasks.length;
+    let checkedSubtasksLength = checkedSubtasks.length;
+    let checkbox;
+    tasks[id]['subTask'] = [];
+    tasks[id]['checkedSubtask'] = [];
+    for (let i = 0; i < subtasksLength; i++) {
+            checkbox = document.getElementById(`subtask_input${i}`);
+            if (checkbox.checked) {
+                tasks[id]['checkedSubtask'].push(checkbox.value);
+            } else {
+                tasks[id]['subTask'].push(checkbox.value);
+            }
+        }
+
+    for (let i = 0; i < checkedSubtasksLength; i++) {
+        checkbox = document.getElementById(`checked_subtask_input${i}`);
+        if (checkbox.checked) {
+            tasks[id]['checkedSubtask'].push(checkbox.value);
+        } else {
+            tasks[id]['subTask'].push(checkbox.value);
+        }
+    }
+}
+
+
 /**
  * save changes in edit task 
  * @param {number} id - number of position of task in array, tasks
@@ -448,7 +497,6 @@ function saveChanges(id) {
     element['headline'] = document.getElementById(`title${id}`).value;
     element['description'] = document.getElementById(`description${id}`).value;
     element['dueDate'] = document.getElementById(`dueDate${id}`).value;
-
 
     if (urgent == true) {
         element['prio'] = 'urgent';
@@ -517,9 +565,12 @@ async function animateNewTask() {
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
-        let page = document.getElementById('boardContentParent');
         id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
-        window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+        if (!mediaforBoard768) {
+            window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+        } else {
+            document.getElementById(`${taskId}`).scrollIntoView();
+        }
         setTimeout(() => {
             taskContainer.classList.add('new-task');
         }, "800");

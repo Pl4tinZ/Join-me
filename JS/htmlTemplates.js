@@ -254,7 +254,7 @@ function subtaskHtml(i) {
  * @param {number} Element - number of the task in the array, tasks
  * @returns - HTML
  */
-function cardContent(Element) {
+function cardContent(Element, allTasks) {
     return /*html*/`
     <div id="${Element['id']}" onclick="openPopUp(${Element['id']})" draggable="true" ondragstart="startDragging(${Element['id']})"
         ondragend="endDragging()" class="task_card">
@@ -272,7 +272,7 @@ function cardContent(Element) {
                 <div class="progress-bar" role="progressbar" style="width: ${Element['tasksPercent']}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
             </div>
             <div class="board_progress">
-                ${Element['tasksDone']}/${Element['tasksOverall']} Done
+                ${Element['checkedSubtask'].length}/${allTasks} Done
             </div>
         </div>
         <div class="assinged_contacts_row">
@@ -339,7 +339,7 @@ function popUpContent(id) {
     `;
 }
 
-function subTaksContentPopup(i, id, subtask) { // checkSubtask(${i, id})
+function subTaksContentPopup(i, subtask) {
     return /*html*/`
     <div id="subtask${i}">
         <input id="subtask_input${i}" type="checkbox" onclick="wiggleEditBtn(); return false"> 
@@ -347,10 +347,26 @@ function subTaksContentPopup(i, id, subtask) { // checkSubtask(${i, id})
     </div>`
 }
 
-function subTaksContentPopupChecked(i, id, checkedSubtask) {
+function subTaksContentPopupChecked(i, checkedSubtask) {
     return /*html*/`
     <div id="checkedSubtask${i}">
         <input class="checked" id="checked_subtask_input${i}" type="checkbox" onclick="wiggleEditBtn(); return false"> 
+        <span>${checkedSubtask}</span>
+    </div>`
+}
+
+function subTaksContentPopupEdit(i, subtask) {
+    return /*html*/`
+    <div id="subtaskEdit${i}" class="subtask_edit">
+        <input value="${subtask}" id="subtask_input${i}" type="checkbox" onclick=""> 
+        <span>${subtask}</span>
+    </div>`
+}
+
+function subTaksContentPopupCheckedEdit(i, checkedSubtask) {
+    return /*html*/`
+    <div id="checkedSubtaskEdit${i}" class="subtask_edit">
+        <input value="${checkedSubtask}" class="checked" id="checked_subtask_input${i}" type="checkbox"> 
         <span>${checkedSubtask}</span>
     </div>`
 }
@@ -430,6 +446,10 @@ function popUpEditContent(id) {
             <div class="visual_assign" id="visual_assign_edit">
                 <!-- JAVASCRIPT visualAssignedPerson -->
             </div>
+        </div>
+        <div class="task_popup_window_2_container" id="subtasks_popup_edit">
+            <h3>Subtasks</h3>
+            <!-- JAVASCRIPT fillInSubtasksPopupEdit   -->
         </div>
         <div onclick="popUpEditSave(${id})"class="accept_button">
             <img src="img/Primary check button V1.png">

@@ -167,4 +167,10 @@
 
 }
 
-@media (max-width: 450px) {}
+@media (max-height: 600px) {
+
+    .tasks_popup {
+        height: calc(100vh - 142px) !important;
+        margin-bottom: 60px;
+    }
+}

@@ -15,6 +15,7 @@ let newCategory = false;
 let prio;
 let taskProgress = 'toDo';
 let mediaforBoard = window.matchMedia("(max-width: 992px)");
+let mediaforBoard768 = window.matchMedia("(max-width: 768px)");
 
 let subtask = [];
 let assignedPersons = [];

@@ -187,7 +187,6 @@
 .create_contact p,
 .edit_contact_popup p {
     width: 154px;
-    height: 25px;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
@@ -422,5 +421,45 @@
     }
     .fill_in_fields div input {
         width: 180px;
+    }
+}
+
+@media (max-height: 600px) {
+    .popup_right {
+        overflow: scroll;
+        height: 70%;
+    }
+    .popup_left {
+        height: 30%;
+    }
+    .popup_left h1 {
+        width: unset;
+        height: unset;
+        font-size: 48px;
+    }
+
+    .popup_left p {
+        width: unset;
+        height: unset;
+        font-size: 18px;
+    }
+    .underline_img {
+        display: none;
+    }
+    .popup_right_profile {
+        width: 70px;
+        height: 70px;
+        top: 15%;
+        left: 10%;
+    }
+    .popup_right_buttons {
+        justify-content: flex-end;
+    }
+    .create_contact {
+        margin-right: 8px;
+        width: 160px;
+    }
+    .create_contact p {
+        font-size: 14px;
     }
 }

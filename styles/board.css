@@ -153,10 +153,7 @@ html {
     border-radius: 30px;
     border: solid 1px rgba(0, 0, 0, 0.15);
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-    padding-top: 18px;
-    padding-bottom: 18px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 18px 20px;
     margin-bottom: 35px;
     cursor: pointer;
 }
@@ -180,7 +177,6 @@ html {
 .card_description {
     font-size: 16px;
     color: #A8A8A8;
-    overflow: hidden;
     width: 100%;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -298,6 +294,20 @@ html {
     cursor: pointer;
 }
 
+.dragcard_popup, .task_popup_window_2 {
+    height: 700px !important;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+    height: 100%;
+}
+
+.dragcard_popup::-webkit-scrollbar, .task_popup_window_2::-webkit-scrollbar {
+    display: none;
+}
+
 
 /* ---------------------- Board Start ---------------------- */
 
@@ -326,6 +336,11 @@ html {
     .board_content_parent {
         left: 0;
     }
+    .board_content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .tool_description {
         display: block;
         padding: 15px 50px;
@@ -337,7 +352,8 @@ html {
     .board_searchbar {
         position: absolute;
         top: 90px;
-        left: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
     }
     .board_add_task {
         width: 40px;
@@ -353,11 +369,10 @@ html {
     }
     .board_overview {
         flex-direction: column;
-        align-items: center;
         margin-bottom: 80px;
     }
     .board_column {
-        width: 70%;
+        width: 100%;
     }
     .board_column img {
         width: 30px;
@@ -368,26 +383,6 @@ html {
     .board_column_headline {
         font-size: 21px;
         max-width: 245px;
-    }
-}
-
-@media (max-height: 850px) {
-    .dragcard_popup, .task_popup_window_2 {
-        height: 700px !important;
-        overflow: scroll;
-        -ms-overflow-style: none;
-        /* IE and Edge */
-        scrollbar-width: none;
-        /* Firefox */
-        height: 100%;
-    }
-
-    .dragcard_popup::-webkit-scrollbar, .task_popup_window_2::-webkit-scrollbar {
-        display: none;
-    }
-
-    .task_popup_window_2 {
-        justify-content: flex-start;
     }
 }
 
@@ -409,9 +404,13 @@ html {
     }
 }
 
-@media (max-width: 600px) {
-    .board_column {
-        width: 90%;
+@media (max-height: 600px) {
+    .task_card {
+        height: 200px;
+        gap: 5px;
+    }
+    .card_category, .card_headline, .card_description, .assinged_contacts_row {
+        margin: 0;
     }
 }
 
@@ -422,7 +421,7 @@ html {
     .board_content {
         padding: 0 25px;
     }
-    .board_searchbar input {
+    .board_searchbar , .board_searchbar input {
         width: 100%;
     }
 }
