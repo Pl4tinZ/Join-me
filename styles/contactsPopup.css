@@ -124,7 +124,7 @@
 .close_contact_popup {
     position: absolute;
     right: 3%;
-    top: 4%;
+    top: 40%;
     z-index: 2;
     cursor: pointer;
 }

@@ -163,7 +163,7 @@
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 600px) and (max-width: 992px) {
 
     .menu {
         height: 60px;

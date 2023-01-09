@@ -734,7 +734,8 @@
     .date input,
     .subtasks,
     .devision,
-    .task_buttons {
+    .task_buttons,
+    .left_task {
         width: 300px;
     }
     .urgent img,

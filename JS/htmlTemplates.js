@@ -65,6 +65,9 @@ function contactInfoMobile(i) {
         </a>
         <h2>Phone</h2>
         <p>${contact['phone']}</p>
+    </div>
+    <div class="exit_contact_info">
+        <img src="img/clear.png" onclick="closeContactInfoMobile()">
     </div>`;    
 }
 

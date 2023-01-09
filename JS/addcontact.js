@@ -135,6 +135,11 @@ function showFullContactInfoMobile(i) {
     }
 }
 
+function closeContactInfoMobile() {
+    let contactInfoContainer = document.getElementById('cotact_info_mobile');
+    contactInfoContainer.classList.remove('d-none');
+} 
+
 /**
  * generate color for contact profile picture
  * @param {string} initials - initials from contact

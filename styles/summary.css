@@ -234,7 +234,7 @@ body {
     .summary_content {
         position: relative;
         margin: 80px 0 0 20px;
-        height: calc(100% - 90px - 79px);
+        height: calc(100% - 90px - 50px);
         background-color: #F6F7F8;
         display: flex;
         flex-direction: column;
@@ -363,6 +363,51 @@ body {
 
     .tasks_card, .urgent_card, .progress_card {
         height: 100px;
+    }
+
+    .tasks_card {
+        width: 170px;
+        height: 110px;
+        padding: 5px 10px;
+        margin-top: 0;
+    }
+    .tasks_card h1 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .tasks_card span {
+        font-size: 14px;
+    }
+    .urgent_card {
+        height: 110px;
+    }
+    .progress_card_parent {
+        height: 110px;
+    }
+    .sum_urgent_parent img {
+        width: 40px;
+    }
+    #urgent {
+        margin-bottom: 0;
+    }
+    .sum_urgent span {
+        font-size: 14px;
+    }
+    .deadline_date {
+        font-size: 16px;
+    }
+    .upcoming_deadline {
+        font-size: 14px;
+    }
+    .progress_card img {
+        width: 40px;
+    }
+    .progress_card h2 {
+        font-size: 47px;
+        margin-bottom: 0;
+    }
+    .progress_card span {
+        font-size: 14px;
     }
 }
 

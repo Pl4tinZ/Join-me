@@ -330,6 +330,9 @@ html {
     .card_category {
         padding: 5px 8px;
     }
+    .board_progress {
+        font-size: 9px;
+    }
 }
 
 @media (max-width: 992px) {
@@ -345,6 +348,9 @@ html {
         display: block;
         padding: 15px 50px;
         font-size: 16px;
+    }
+    .board_column {
+        width: 24%;
     }
 }
 
@@ -411,6 +417,12 @@ html {
     }
     .card_category, .card_headline, .card_description, .assinged_contacts_row {
         margin: 0;
+    }
+    .card_description {
+        font-size: 12px;
+    }
+    .card_headline {
+        font-size: 14px;
     }
 }
 
