@@ -1,3 +1,4 @@
 
 create task auf handy scrollbar ???  bei contacts sobald man bei untersuchen über den slidein container hovert
-contact information nochmal mit figma verleichen
+
+https://www.figma.com/file/3qlJ22yFozngW2gdOfczMe/Join-Version-1-(Final-version)

@@ -29,7 +29,7 @@
 
 .contact_name_container {
     display: flex;
-    width: 350px;
+    width: 370px;
     height: 120px;
     justify-content: space-between;
     align-items: center;
@@ -60,8 +60,8 @@
 }
 
 .full_listner img {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     margin-left: 16px;
     cursor: pointer;
 }
@@ -318,10 +318,6 @@
     .contact_name h3 {
         font-size: 20px;
     }
-    .full_listner img {
-        width: 20px;
-        height: 20px;
-    }
 }
 
 @media(max-width: 1250px) {
@@ -394,7 +390,7 @@
     }
 
     .contact_name_container {
-        width: 300px;
+        width: 200px;
         height: 100px;
         justify-content: flex-start;
         margin-left: 25px;
@@ -411,7 +407,7 @@
     }
 
     .full_listner > p {
-        display: none;
+        font-size: 30px !important;
     }
 
     .contact_name h3 {
@@ -425,10 +421,6 @@
     .contact-list {
         width: 100vw;
         height: 100vh;
-    }
-
-    .full_listner img {
-        display: none;
     }
 
     .full_contact_info {

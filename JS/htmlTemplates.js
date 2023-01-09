@@ -1,4 +1,4 @@
-// --- addContact --- //
+// ------------------------------------------------------------------------ addContact ------------------------------------------------------------------------ //
 
 /**
  * render contact information details
@@ -91,7 +91,7 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
                     <a href="#"><p>${contacts[i]['email']}</p></a>
                     </div>
                 </div>
-                <p style="font-size: 50px !important; margin: 0px">|</p>
+                <p style="font-size: 40px !important; margin: 0px">|</p>
                 <img src="img/trash-can.png" onclick="removeContact(${i})">
             </div>
         </div>
@@ -114,13 +114,13 @@ function letterAlreadyExist(i, initials) {
             <a href="#"><p>${contacts[i]['email']}</p></a>
             </div>
         </div>
-        <p style="font-size: 50px !important; margin: 0px">|</p>
+        <p style="font-size: 40px !important; margin: 0px">|</p>
         <img src="img/trash-can.png" onclick="removeContact(${i})">
     </div>`
 }
 
 
-// --- addTask --- //
+// ------------------------------------------------------------------------ addTask ------------------------------------------------------------------------ //
 
 /**
  * - push all contacts to the select input in the task
@@ -247,7 +247,7 @@ function subtaskHtml(i) {
     return /*html*/`<div>${subtask[i]}</div>`;
 }
 
-// --- board --- //
+// ------------------------------------------------------------------------ board ------------------------------------------------------------------------ //
 
 /**
  * content of the task on board page
