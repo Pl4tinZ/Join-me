@@ -59,9 +59,9 @@ let tasks = [
     {
         assignet: [ "Jörg Abratis", "Pia Rose","Peter Schleich",  "Timm Schwarz"],
         category: "Backoffice",
-        date: "2022-11-30",
+        date: "2023-01-10T12:57:50",
         description: "do something",
-        dueDate: "023-01-10T12:57:50",
+        dueDate: "2022-11-30",
         headline: "Something",
         id: 3,
         initials: [ "JA", "PR", "PS", "TS" ],
@@ -77,7 +77,7 @@ let tasks = [
     {
         assignet: [ "Jörg Abratis", "Celine Holzinger", "Pia Rose", "Timm Schwarz"],
         category: "Design",
-        date: "023-01-09T12:57:50",
+        date: "2023-01-09T12:57:50",
         description: "make everything beautiful",
         dueDate: "2022-11-30",
         headline: "Everything",

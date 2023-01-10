@@ -43,7 +43,7 @@ function replaceDayTimeSummary() {
  * @param {string} activeUser - logged user
  */
 function replaceNameSummary(activeUser) {
-    document.getElementById('greeting_Name').innerHTML = activeUser[0].toUpperCase() + activeUser.substring(1);
+    document.getElementById('greeting_Name').innerHTML = activeUser[0].charAt(0).toUpperCase() + activeUser[0].slice(1);
 }
 
 /**

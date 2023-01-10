@@ -37,16 +37,16 @@ function login() {
     let user = users.find( u => u.email.toLowerCase() == email.value.toLowerCase() && u.password == password.value)
 
     if (user) {
-        rightPassword();
+        rightPassword(user);
     } else {
-        wrongPassword();
+        wrongPassword(user);
     }
 }
 
 /**
  * login section right password
  */
-async function rightPassword() {
+async function rightPassword(user) {
     document.getElementById('wrong_login').classList.add('d-none');
     currentUser.push(user['name']);
     await backend.setItem('currentUser', JSON.stringify(currentUser)); // save users
@@ -59,7 +59,7 @@ async function rightPassword() {
 /**
  * login section wrong password
  */
-function wrongPassword() {
+function wrongPassword(user) {
     counter++;
     document.getElementById('wrong_login').classList.remove('d-none');
     if (counter >= 2) {

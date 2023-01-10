@@ -45,7 +45,7 @@ function replaceDayTime() {
  * @param {string} activeUser - logged user
  */
 function replaceName(activeUser) {
-    document.getElementById('greetingName').innerHTML = activeUser[0].toUpperCase() + activeUser.substring(1);
+    document.getElementById('greetingName').innerHTML = activeUser[0].charAt(0).toUpperCase() + activeUser[0].slice(1);
 }
 
 /**
