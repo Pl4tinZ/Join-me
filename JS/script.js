@@ -9,9 +9,8 @@ function loadMenuBar() {
  * check if user already logged
  */
 function checkIfLogged() {
-
     let loggedUser;
-
+    
     if (!sessionStorage.getItem(loggedUser, 'logged')) {
         localStorage.removeItem('token')
         navigator.sendBeacon('api/logout')

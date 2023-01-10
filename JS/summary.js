@@ -55,11 +55,6 @@ function showNumberOfTasksAwaitingFeedback() {
     let toDo = 0;
     let tasksDone = 0;
     let urgent = 0;
-    let awaitingFeedbacks = document.getElementById('awaitingFeedback');
-    let progressNumbers = document.getElementById('tasksInProgress');
-    let toDos = document.getElementById('toDo');
-    let taskDone = document.getElementById('done');
-    let urgents = document.getElementById('urgent');
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i]['progress'] == 'awaitingFeedback') {
             awaitingFeedback++;
@@ -77,11 +72,11 @@ function showNumberOfTasksAwaitingFeedback() {
             urgent++;
         }
     }
-    awaitingFeedbacks.innerHTML = awaitingFeedback;
-    progressNumbers.innerHTML = progressNumber;
-    toDos.innerHTML = toDo;
-    taskDone.innerHTML = tasksDone;
-    urgents.innerHTML = urgent;
+    document.getElementById('awaitingFeedback').innerHTML = awaitingFeedback;
+    document.getElementById('tasksInProgress').innerHTML = progressNumber;
+    document.getElementById('toDo').innerHTML = toDo;
+    document.getElementById('done').innerHTML = tasksDone;
+    document.getElementById('urgent').innerHTML = urgent;
 }
 
 /**

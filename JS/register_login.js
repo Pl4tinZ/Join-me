@@ -29,29 +29,41 @@ async function addUser() {
 }
 
 /**
- * - login and go to the next page
+ * - login
  */
-async function login() {
-
+function login() {
     let email = document.getElementById('login_email');
     let password = document.getElementById('login_password');
+    let user = users.find( u => u.email.toLowerCase() == email.value.toLowerCase() && u.password == password.value)
 
-    let user = users.find( u => u.email.toLowerCase() == email.value.toLowerCase() && u.password == password.value) 
     if (user) {
-        console.log('user gefunden');
-        document.getElementById('wrong_login').classList.add('d-none');
-        currentUser.push(user['name']);
-        await backend.setItem('currentUser', JSON.stringify(currentUser)); // save users
-        sessionStorage.setItem(loggedUser, 'logged');
-        counter = 0;
-        rememberMe();
-        location.href = 'hello.html';
+        rightPassword();
     } else {
-        counter++;
-        document.getElementById('wrong_login').classList.remove('d-none');
-        if (counter >= 2) {
-            animateForgotPassword();
-        }
+        wrongPassword();
+    }
+}
+
+/**
+ * login section right password
+ */
+async function rightPassword() {
+    document.getElementById('wrong_login').classList.add('d-none');
+    currentUser.push(user['name']);
+    await backend.setItem('currentUser', JSON.stringify(currentUser)); // save users
+    sessionStorage.setItem(loggedUser, 'logged');
+    counter = 0;
+    rememberMe();
+    location.href = 'hello.html';
+}
+
+/**
+ * login section wrong password
+ */
+function wrongPassword() {
+    counter++;
+    document.getElementById('wrong_login').classList.remove('d-none');
+    if (counter >= 2) {
+        animateForgotPassword();
     }
 }
 
@@ -88,7 +100,6 @@ function animateForgotPassword() {
  * - function for autofill login at the next time
  */
 function rememberMe() {
-
     let checkBox = document.getElementById('remember_me');
     let email = document.getElementById('login_email');
     let password = document.getElementById('login_password');
@@ -108,7 +119,6 @@ function rememberMe() {
  * - check if remember me button was clicked last time
  */
 function checkIfAutocomplete() {
-
     let email = document.getElementById('login_email');
     let password = document.getElementById('login_password');
     let checkBox = document.getElementById('remember_me');
