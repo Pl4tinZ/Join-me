@@ -6,6 +6,13 @@ async function renderAddTask() {
     checkIfLogged();
     loadTasks();
     loadCategories();
+    renderSelectsAddTask();
+}
+
+/**
+ * - fill in the select tags with categorys and contacts
+ */
+function renderSelectsAddTask() {
     let select = document.getElementById('select_assign');
     let selectCategory = document.getElementById('category');
     select.innerHTML = '';
@@ -79,33 +86,13 @@ async function createTask() {
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
     let category = checkCategoryInput();
+    let taskCard;
     if (!checkInputs(title, date)) {
         checkIfNewCategory(category);
         checkWhichIdIsFree();
         getInitialsFromContacts();
-
-        let taskCard = {
-            "title": title.value,
-            "description": description.value,
-            "id": globalIdForTaskCard,
-            "progress": taskProgress,
-            "category": category,
-            "date": date.value,
-            "headline": title.value,
-            "description": description.value,
-            "dueDate": date.value,
-            "prio": prio,
-            "subTask": subtask,
-            "checkedSubtask": [],
-            "tasksOverall": 3,
-            "tasksDone": 0,
-            "tasksPercent": '',
-            "assignet": assignedPersons,
-            "initials": initialsForTaskCard,
-        }
-
+        taskCard = createNewTaskCard(title, description, date, category, taskCard);
         tasks.push(taskCard);
-        globalIdForTaskCard++;
         clearInputFieldsAddTask(title, description, category, assign, date);
         successAnimationAddTask();
         successAnimationAddTaskPopup();
@@ -117,6 +104,29 @@ async function createTask() {
             location.href = 'board.html';
         }, "1000")  
     }
+}
+
+function createNewTaskCard(title, description, date, category, taskCard) {
+    taskCard = {
+        "title": title.value,
+        "description": description.value,
+        "id": globalIdForTaskCard,
+        "progress": taskProgress,
+        "category": category,
+        "date": date.value,
+        "headline": title.value,
+        "description": description.value,
+        "dueDate": date.value,
+        "prio": prio,
+        "subTask": subtask,
+        "checkedSubtask": [],
+        "tasksOverall": 3,
+        "tasksDone": 0,
+        "tasksPercent": '',
+        "assignet": assignedPersons,
+        "initials": initialsForTaskCard,
+    }
+    return taskCard;
 }
 
 /**
@@ -203,13 +213,27 @@ function getInitialsFromContacts() {
  * get a new unique id for Task
  */
 function checkWhichIdIsFree() {
+    globalIdForTaskCard = 0;
+    let match = false;
+    match = getId(match);
+}
+
+/**
+ * - generate ID
+ * @param {boolean} match - for new ID
+ */
+function getId(match) {
     for (let i = 0; i < tasks.length; i++) {
         const element = tasks[i];
         if (globalIdForTaskCard == element['id']) {
-            globalIdForTaskCard++;
-        } else {
-            globalIdForTaskCard = i;
+            match = true;
         }
+    }
+    
+    if (match) {
+        globalIdForTaskCard++;
+        match = false;
+        getId(match)
     }
 }
 
@@ -344,6 +368,10 @@ async function getNewCategory() {
     saveCategories();
 }
 
+/**
+ * - delete task
+ * @param {number} id - number of Position in Array Tasks
+ */
 function deleteTask(id) {
     tasks.splice(id, 1);
     saveTasks();
@@ -351,6 +379,11 @@ function deleteTask(id) {
     initBoard();
 }
 
+/**
+ * - get position from task in Array by comparing the id's
+ * @param {number} id - id of selected or openend element
+ * @returns - position in Array
+ */
 function getPositionInTaks(id) {
     let position;
     for (let i = 0; i < tasks.length; i++) {
