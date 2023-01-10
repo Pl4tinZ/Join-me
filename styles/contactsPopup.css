@@ -124,7 +124,7 @@
 .close_contact_popup {
     position: absolute;
     right: 3%;
-    top: 40%;
+    top: 1%;
     z-index: 2;
     cursor: pointer;
 }
@@ -424,7 +424,17 @@
     }
 }
 
-@media (max-height: 600px) {
+@media (max-height: 670px) {
+    .popup_right_profile {
+        width: 100px;
+        height: 100px;
+    }
+    .popup_right_buttons {
+        bottom: 5px;
+    }
+}
+
+@media (max-height: 600px) and (max-width: 450px) {
     .popup_right {
         overflow: scroll;
         height: 70%;
