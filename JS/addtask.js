@@ -140,17 +140,6 @@ function successAnimationAddTask() {
 }
 
 /**
- * succes animation onn add task popup if task created successful
- */
-function successAnimationAddTaskPopup() {
-    let succesAnimationPopup = document.getElementById('success_animation_popup');
-    if (succesAnimationPopup) {
-        succesAnimationPopup.classList.remove('d-none');
-        setTimeout(() => {closeAddTaskPopup()}, "1300")  
-    };
-}
-
-/**
  * save tasks Array to server
  */
 async function saveTasks() {

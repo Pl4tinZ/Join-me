@@ -122,44 +122,6 @@ function drop(progress) {
 }
 
 /**
- * open popup of task to see more informations
- * @param {number} id - number of position of task in array, tasks
- */
-function openPopUp(id) {
-    id = getPositionInTaks(id);
-    document.getElementById('popUpArea').classList.remove('d-none');
-    document.getElementById('boardContentParent').classList.add('hidden');
-    document.getElementById('popUpArea').innerHTML = '';
-    document.getElementById('popUpArea').innerHTML = popUpContent(id);
-    checkMediaforBoard(mediaforBoard);
-    fillInTaskAssignPopup(id);
-    fillInCategoryColorPopup(id);
-    fillInSubtasksPopup(id);
-}
-
-/**
- * close popup of task
- */
-function closePopUp() {
-    document.getElementById('popUpArea').classList.add('d-none');
-    document.querySelector('.board_content').classList.remove('d-none');
-    document.getElementById('boardContentParent').classList.remove('hidden');
-}
-
-/**
- * open popup of task to edit it
- * @param {number} id - number of position of task in array, tasks
- */
-function openPopUpEdit(id) {
-    document.getElementById('popUpArea').innerHTML = '';
-    document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
-    renderEditTaskCard(id);
-    renderAllProgressTaskCard(id);
-    visualAssignedPersonEdit(id);
-    fillInSubtasksPopupEdit(id);
-}
-
-/**
  * fill in the category of every task
  */
 async function fillInCategory() {
@@ -181,6 +143,10 @@ async function fillInCategory() {
     }
 }
 
+/**
+ * - fill in background-color in category container
+ * @param {number} id - id of opened task
+ */
 async function fillInCategoryColorPopup(id) {
     await loadCategories();
     let categoryContainer = document.querySelector('.categorycard');
@@ -195,60 +161,6 @@ async function fillInCategoryColorPopup(id) {
     }
 }
 
-function fillInSubtasksPopup(id) {
-    let subtasks = tasks[id]['subTask'];
-    let checkedSubtasks = tasks[id]['checkedSubtask'];
-    let subtaskContainer = document.getElementById('subtasks_popup');
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopup(i, subtask);
-    }
-    for (let i = 0; i < checkedSubtasks.length; i++) {
-        const checkedSubtask = checkedSubtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopupChecked(i, checkedSubtask);
-    }
-    checkTheCheckbox();
-}
-
-function fillInSubtasksPopupEdit(id) {
-    let subtasks = tasks[id]['subTask'];
-    let checkedSubtasks = tasks[id]['checkedSubtask'];
-    let subtaskContainer = document.getElementById('subtasks_popup_edit');
-    for (let i = 0; i < subtasks.length; i++) {
-        const subtask = subtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopupEdit(i, subtask);
-    }
-    for (let i = 0; i < checkedSubtasks.length; i++) {
-        const checkedSubtask = checkedSubtasks[i];
-        subtaskContainer.innerHTML += subTaksContentPopupCheckedEdit(i, checkedSubtask);
-    }
-    checkTheCheckbox();
-}
-
-function checkTheCheckbox() {
-    let checkedElements = document.querySelectorAll('.checked');
-
-    for (let i = 0; i < checkedElements.length; i++) {
-        const element = checkedElements[i];
-        element.checked = true;
-    }
-}
-
-function wiggleEditBtn() {
-    document.querySelector('.edit_btn').animate(
-        [
-            { transform: 'scale(1)' },
-            { transform: 'scale(1.1)' },
-            { transform: 'scale(1)' }
-        ],
-        {
-            duration: 200,
-            iterations: 3,
-            direction: 'alternate'
-        }
-    );
-}
-
 /**
  * clear the initials of assigned persons in every task
  */
@@ -260,14 +172,6 @@ function clearInitialContainer() {
             initialsContainer.innerHTML = '';
         }
     }
-}
-
-/**
- * clear the initials of assigned persons in every task in the popup
- */
-function clearInitialContainerTaskPopup() {
-    let taskAssign = document.getElementById('taskAssignContainer');
-    taskAssign.innerHTML = '';
 }
 
 /**
@@ -299,19 +203,6 @@ function getHighestId() {
 }
 
 /**
- * fill in the initials of assigned persons in every task in the popup
- */
-function fillInTaskAssignPopup(id) {
-    let taskAssign = document.getElementById('taskAssignContainer');
-    clearInitialContainerTaskPopup();
-    for (let i = 0; i < tasks[id]['assignet'].length; i++) {
-        let initials = tasks[id]['initials'][i];
-        let fullName = tasks[id]['assignet'][i];
-        taskAssign.innerHTML += assignPopupHtml(initials, fullName);
-    }
-}
-
-/**
  * render all progress to change in select tag
  */
 function renderAllProgressTaskCard() {
@@ -331,36 +222,6 @@ function changeProgress(id) {
 }
 
 /**
- * get all informations for edit task
- */
-function renderEditTaskCard() {
-    let select = document.getElementById('select_assign_edit');
-    select.innerHTML = '';
-    sortContacts();
-
-    for (let i = 0; i < contacts.length; i++) {
-        const contact = contacts[i];
-        select.innerHTML += editTaskSelectHtml(contact, i);
-    }
-}
-
-/**
- * render all assigned persons for edit task popup
- * @param {number} i - number of position of task in array, tasks
- */
-function addAssignEdit(i) {
-    let option = document.getElementById('select_assign_edit');
-
-    if (!assignedPersons.includes(option.value)) {
-        let initials = getInitialsFromFullName(option.value);
-        assignedPersons.push(option.value);
-        tasks[i]['assignet'].push(option.value);
-        tasks[i]['initials'].push(initials);
-        visualAssignedPersonEdit(i);
-    }
-}
-
-/**
  * get the initials from a full name
  * @param {string} fullName - full name of contact
  * @returns - iniials from contact
@@ -371,20 +232,6 @@ function getInitialsFromFullName(fullName) {
     let secondName = arr[1].charAt(0);
     let initials = firstName + secondName;
     return initials;
-}
-
-/**
- * visualisieze all assigned contacts in edit task
- * @param {number} id - number of position of task in array, tasks
- */
-function visualAssignedPersonEdit(id) {
-    let container = document.getElementById('visual_assign_edit');
-    let assignedPerson = tasks[id]['assignet'];
-    container.innerHTML = '';
-    for (let i = 0; i < assignedPerson.length; i++) {
-        const person = assignedPerson[i];
-        container.innerHTML += assignEditHtml(id, i, person);
-    }
 }
 
 /**
@@ -437,28 +284,9 @@ function changeLow() {
 }
 
 /**
- * save all new specifications to server if click the 'ok'-button in edit task popup
- * @param {number} id - number of position of task in array, tasks
+ * - save the edited subtasks
+ * @param {number} id - id of task
  */
-async function popUpEditSave(id) {
-    saveChanges(id);
-    saveSubtasks(id);
-    successAnimationEditTaskPopup();
-    await saveTasks();
-    initBoard();
-}
-
-/**
- * animation for successfull change task specifications
- */
-function successAnimationEditTaskPopup() {
-    let succesAnimationPopup = document.getElementById('success_animation_edit_popup');
-    if (succesAnimationPopup) {
-        succesAnimationPopup.classList.remove('d-none');
-        setTimeout(() => { closePopUp(succesAnimationPopup) }, "1300")
-    };
-}
-
 function saveSubtasks(id) {
     let task = tasks[id];
     let subtasks = task['subTask'];
@@ -468,15 +296,34 @@ function saveSubtasks(id) {
     let checkbox;
     tasks[id]['subTask'] = [];
     tasks[id]['checkedSubtask'] = [];
-    for (let i = 0; i < subtasksLength; i++) {
-            checkbox = document.getElementById(`subtask_input${i}`);
-            if (checkbox.checked) {
-                tasks[id]['checkedSubtask'].push(checkbox.value);
-            } else {
-                tasks[id]['subTask'].push(checkbox.value);
-            }
-        }
+    saveNotCheckedSubtasks(subtasksLength, id, checkbox);
+    saveCheckedSubtasks(checkedSubtasksLength, id, checkbox);
+}
 
+/**
+ * - save not cheked subtasks
+ * @param {number} subtasksLength - length of all subtasks which are not checked from the task
+ * @param {number} id - id of task
+ * @param {input} checkbox - checkbox
+ */
+function saveNotCheckedSubtasks(subtasksLength, id, checkbox) {
+    for (let i = 0; i < subtasksLength; i++) {
+        checkbox = document.getElementById(`subtask_input${i}`);
+        if (checkbox.checked) {
+            tasks[id]['checkedSubtask'].push(checkbox.value);
+        } else {
+            tasks[id]['subTask'].push(checkbox.value);
+        }
+    }
+}
+
+/**
+ * - save checked subtasks
+ * @param {number} subtasksLength - length of all subtasks which are checked from the task
+ * @param {number} id - id of task
+ * @param {input} checkbox - checkbox
+ */
+function saveCheckedSubtasks(checkedSubtasksLength, id, checkbox) {
     for (let i = 0; i < checkedSubtasksLength; i++) {
         checkbox = document.getElementById(`checked_subtask_input${i}`);
         if (checkbox.checked) {
@@ -565,17 +412,21 @@ async function animateNewTask() {
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
-        id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
-        if (!mediaforBoard768) {
-            window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
-        } else {
-            document.getElementById(`${taskId}`).scrollIntoView();
-        }
-        setTimeout(() => {
-            taskContainer.classList.add('new-task');
-        }, "800");
+        animationOfNewTask(id, taskId, taskContainer);
         newTask = false;
         taskContainer.classList.remove('new-task');
         await backend.setItem('newTask', JSON.stringify(newTask));
     }
+}
+
+function animationOfNewTask(id, taskId, taskContainer) {
+    id.scrollTo({ top: id.scrollHeight, behavior: 'smooth' });
+    if (!mediaforBoard768) {
+        window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+    } else {
+        document.getElementById(`${taskId}`).scrollIntoView();
+    }
+    setTimeout(() => {
+        taskContainer.classList.add('new-task');
+    }, "800");
 }

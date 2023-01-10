@@ -166,6 +166,213 @@ function closeAddTaskPopup() {
     }
 }
 
+/**
+ * succes animation onn add task popup if task created successful
+ */
+function successAnimationAddTaskPopup() {
+    let succesAnimationPopup = document.getElementById('success_animation_popup');
+    if (succesAnimationPopup) {
+        succesAnimationPopup.classList.remove('d-none');
+        setTimeout(() => {closeAddTaskPopup()}, "1300")  
+    };
+}
+
 function loadAddTaskPopupWindow() {
     document.querySelector('.addtask_popup').innerHTML = addTaskPopupWindowContent();
+}
+
+// ------------------------------------------------------------------ Board ------------------------------------------------------------------ //
+
+/**
+ * open popup of task to see more informations
+ * @param {number} id - number of position of task in array, tasks
+ */
+function openPopUp(id) {
+    id = getPositionInTaks(id);
+    document.getElementById('popUpArea').classList.remove('d-none');
+    document.getElementById('boardContentParent').classList.add('hidden');
+    document.getElementById('popUpArea').innerHTML = '';
+    document.getElementById('popUpArea').innerHTML = popUpContent(id);
+    checkMediaforBoard(mediaforBoard);
+    fillInTaskAssignPopup(id);
+    fillInCategoryColorPopup(id);
+    fillInSubtasksPopup(id);
+}
+
+/**
+ * close popup of task
+ */
+function closePopUp() {
+    document.getElementById('popUpArea').classList.add('d-none');
+    document.querySelector('.board_content').classList.remove('d-none');
+    document.getElementById('boardContentParent').classList.remove('hidden');
+}
+
+/**
+ * open popup of task to edit it
+ * @param {number} id - number of position of task in array, tasks
+ */
+function openPopUpEdit(id) {
+    document.getElementById('popUpArea').innerHTML = '';
+    document.getElementById('popUpArea').innerHTML = popUpEditContent(id);
+    renderEditTaskCard(id);
+    renderAllProgressTaskCard(id);
+    visualAssignedPersonEdit(id);
+    fillInSubtasksPopupEdit(id);
+}
+
+/**
+ * - render the subtasks in task card
+ * @param {number} id - number of position of task in array, tasks
+ */
+function fillInSubtasksPopup(id) {
+    let subtasks = tasks[id]['subTask'];
+    let checkedSubtasks = tasks[id]['checkedSubtask'];
+    let subtaskContainer = document.getElementById('subtasks_popup');
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopup(i, subtask);
+    }
+    for (let i = 0; i < checkedSubtasks.length; i++) {
+        const checkedSubtask = checkedSubtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupChecked(i, checkedSubtask);
+    }
+    checkTheCheckbox();
+}
+
+/**
+ * - render the subtasks in task card edit
+ * @param {number} id - number of position of task in array, tasks
+ */
+function fillInSubtasksPopupEdit(id) {
+    let subtasks = tasks[id]['subTask'];
+    let checkedSubtasks = tasks[id]['checkedSubtask'];
+    let subtaskContainer = document.getElementById('subtasks_popup_edit');
+    for (let i = 0; i < subtasks.length; i++) {
+        const subtask = subtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupEdit(i, subtask);
+    }
+    for (let i = 0; i < checkedSubtasks.length; i++) {
+        const checkedSubtask = checkedSubtasks[i];
+        subtaskContainer.innerHTML += subTaksContentPopupCheckedEdit(i, checkedSubtask);
+    }
+    checkTheCheckbox();
+}
+
+/**
+ * check if checkboxes are checked or not
+ */
+function checkTheCheckbox() {
+    let checkedElements = document.querySelectorAll('.checked');
+
+    for (let i = 0; i < checkedElements.length; i++) {
+        const element = checkedElements[i];
+        element.checked = true;
+    }
+}
+
+/**
+ * wiggle animation for trying edit task in the wrong popup
+ */
+function wiggleEditBtn() {
+    document.querySelector('.edit_btn').animate(
+        [
+            { transform: 'scale(1)' },
+            { transform: 'scale(1.1)' },
+            { transform: 'scale(1)' }
+        ],
+        {
+            duration: 200,
+            iterations: 3,
+            direction: 'alternate'
+        }
+    );
+}
+
+/**
+ * clear the initials of assigned persons in every task in the popup
+ */
+function clearInitialContainerTaskPopup() {
+    let taskAssign = document.getElementById('taskAssignContainer');
+    taskAssign.innerHTML = '';
+}
+
+/**
+ * fill in the initials of assigned persons in every task in the popup
+ */
+function fillInTaskAssignPopup(id) {
+    let taskAssign = document.getElementById('taskAssignContainer');
+    clearInitialContainerTaskPopup();
+    for (let i = 0; i < tasks[id]['assignet'].length; i++) {
+        let initials = tasks[id]['initials'][i];
+        let fullName = tasks[id]['assignet'][i];
+        taskAssign.innerHTML += assignPopupHtml(initials, fullName);
+    }
+}
+
+/**
+ * get all informations for edit task
+ */
+function renderEditTaskCard() {
+    let select = document.getElementById('select_assign_edit');
+    select.innerHTML = '';
+    sortContacts();
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+        select.innerHTML += editTaskSelectHtml(contact, i);
+    }
+}
+
+/**
+ * render all assigned persons for edit task popup
+ * @param {number} i - number of position of task in array, tasks
+ */
+function addAssignEdit(i) {
+    let option = document.getElementById('select_assign_edit');
+
+    if (!assignedPersons.includes(option.value)) {
+        let initials = getInitialsFromFullName(option.value);
+        assignedPersons.push(option.value);
+        tasks[i]['assignet'].push(option.value);
+        tasks[i]['initials'].push(initials);
+        visualAssignedPersonEdit(i);
+    }
+}
+
+/**
+ * visualisieze all assigned contacts in edit task
+ * @param {number} id - number of position of task in array, tasks
+ */
+function visualAssignedPersonEdit(id) {
+    let container = document.getElementById('visual_assign_edit');
+    let assignedPerson = tasks[id]['assignet'];
+    container.innerHTML = '';
+    for (let i = 0; i < assignedPerson.length; i++) {
+        const person = assignedPerson[i];
+        container.innerHTML += assignEditHtml(id, i, person);
+    }
+}
+
+/**
+ * save all new specifications to server if click the 'ok'-button in edit task popup
+ * @param {number} id - number of position of task in array, tasks
+ */
+async function popUpEditSave(id) {
+    saveChanges(id);
+    saveSubtasks(id);
+    successAnimationEditTaskPopup();
+    await saveTasks();
+    initBoard();
+}
+
+/**
+ * animation for successfull change task specifications
+ */
+function successAnimationEditTaskPopup() {
+    let succesAnimationPopup = document.getElementById('success_animation_edit_popup');
+    if (succesAnimationPopup) {
+        succesAnimationPopup.classList.remove('d-none');
+        setTimeout(() => { closePopUp(succesAnimationPopup) }, "1300")
+    };
 }
