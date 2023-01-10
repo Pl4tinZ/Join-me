@@ -5,7 +5,7 @@ let tasks = [
     {
         assignet: [ "Greta Korn", "Peter Schleich" ],
         category: "Media",
-        date: "2022-11-30",
+        date: "2023-01-10T12:50:27",
         description: "make many of tests",
         dueDate: "2022-11-30",
         headline: "Test this Website",
@@ -23,7 +23,7 @@ let tasks = [
     {
         assignet: [ "Peter Schleich" ],
         category: "Media",
-        date: "2022-11-30",
+        date: "2023-01-10T12:57:15",
         description: "test if responsive",
         dueDate: "2022-11-30",
         headline: "Test responsive",
@@ -41,7 +41,7 @@ let tasks = [
     {
         assignet: [ "Jörg Abratis", "Celine Holzinger", "Greta Korn",  "Pia Rose","Peter Schleich",  "Timm Schwarz"],
         category: "Marketing",
-        date: "2022-11-30",
+        date: "2023-01-10T12:57:32",
         description: "promote this Website",
         dueDate: "2022-11-30",
         headline: "Promotion",
@@ -61,7 +61,7 @@ let tasks = [
         category: "Backoffice",
         date: "2022-11-30",
         description: "do something",
-        dueDate: "2022-11-30",
+        dueDate: "023-01-10T12:57:50",
         headline: "Something",
         id: 3,
         initials: [ "JA", "PR", "PS", "TS" ],
@@ -77,7 +77,7 @@ let tasks = [
     {
         assignet: [ "Jörg Abratis", "Celine Holzinger", "Pia Rose", "Timm Schwarz"],
         category: "Design",
-        date: "2022-11-30",
+        date: "023-01-09T12:57:50",
         description: "make everything beautiful",
         dueDate: "2022-11-30",
         headline: "Everything",
@@ -95,7 +95,7 @@ let tasks = [
     {
         assignet: [ "Celine Holzinger", "Pia Rose","Peter Schleich",  "Timm Schwarz"],
         category: "Media",
-        date: "2022-11-30",
+        date: "023-01-8T12:57:50",
         description: "try new colors",
         dueDate: "2022-11-30",
         headline: "Colors",

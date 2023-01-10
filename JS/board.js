@@ -408,7 +408,7 @@ async function animateNewTask() {
     newTask = JSON.parse(backend.getItem('newTask'));
     await backend.setItem('modyfiedTasks', JSON.stringify(tasks));
     if (newTask == true) {
-        let taskId = tasks.length - 1;
+        let taskId = findMaxDateInTasks();
         let taskContainer = document.getElementById(`${taskId}`);
         let containerId = tasks[taskId]['progress'];
         let id = document.getElementById(`${containerId}`);
@@ -417,6 +417,27 @@ async function animateNewTask() {
         taskContainer.classList.remove('new-task');
         await backend.setItem('newTask', JSON.stringify(newTask));
     }
+}
+
+/**
+ * - find the task with the max date
+ * @returns - id of task with the max date
+ */
+function findMaxDateInTasks() {
+    let allDates = [];
+    let taskId;
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        allDates.push(element['date']);
+    }
+    let maxDate = allDates.reduce(function (a, b) { return a > b ? a : b; });
+    for (let i = 0; i < tasks.length; i++) {
+        const element = tasks[i];
+        if (element['date'] == maxDate) {
+            taskId = element['id'];
+        }
+    }
+    return taskId;
 }
 
 function animationOfNewTask(id, taskId, taskContainer) {

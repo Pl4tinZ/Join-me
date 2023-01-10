@@ -113,7 +113,7 @@ function createNewTaskCard(title, description, date, category, taskCard) {
         "id": globalIdForTaskCard,
         "progress": taskProgress,
         "category": category,
-        "date": date.value,
+        "date": getNewDate(),
         "headline": title.value,
         "description": description.value,
         "dueDate": date.value,
@@ -127,6 +127,15 @@ function createNewTaskCard(title, description, date, category, taskCard) {
         "initials": initialsForTaskCard,
     }
     return taskCard;
+}
+
+/**
+ * - generate date in YYYY-MM-DDTHH:MM:SS format
+ * @returns - date of today in YYYY-MM-DDTHH:MM:SS format
+ */
+function getNewDate() {
+    let yourDate = (new Date(new Date().toString().split('GMT')[0]+' UTC').toISOString().split('.')[0]);
+    return yourDate;
 }
 
 /**
