@@ -39,7 +39,7 @@ function login() {
     if (user) {
         rightPassword(user);
     } else {
-        wrongPassword(user);
+        wrongPassword();
     }
 }
 
@@ -59,7 +59,7 @@ async function rightPassword(user) {
 /**
  * login section wrong password
  */
-function wrongPassword(user) {
+function wrongPassword() {
     counter++;
     document.getElementById('wrong_login').classList.remove('d-none');
     if (counter >= 2) {
@@ -72,9 +72,9 @@ function wrongPassword(user) {
  */
 async function guestLogin() {
     activeUser = 'guest';
-    currentUser.push(['guest']);
+    currentUser.push(activeUser);
     sessionStorage.setItem(loggedUser, 'logged');
-    await backend.setItem('currentUser', JSON.stringify(activeUser));
+    await backend.setItem('currentUser', JSON.stringify(currentUser));
     location.href = 'hello.html';
 }
 

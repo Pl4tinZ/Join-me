@@ -374,7 +374,7 @@
     .underframe1 {
         flex-direction: column;
         align-items: flex-start;
-        overflow-y: scroll;
+        gap: 8px;
     }
 
     .categorycard {
@@ -395,10 +395,6 @@
     .dragcard_popup_frame_2 img {
         height: 35px;
         width: 100px;
-    }
-
-    .dragcard_popup_frame_4 {
-        overflow-y: scroll;
     }
 
     .assign_container_popup {
@@ -444,7 +440,7 @@
 @media (max-width: 450px) {
 
     .dragcard_popup {
-        padding: 10px;
+        padding: 24px;
         margin-bottom: 60px;
     }
 
@@ -453,15 +449,15 @@
     }
 
     .headerdescription h1 {
-        font-size: 40px;
+        font-size: 32px;
     }
 
     .description_dragcard_pupup p {
         font-size: 18px;
     }
 
-    .dragcard_popup_frame_1 h2 {
-        font-size: 20px;
+    .dragcard_popup_frame_1 h2, .dragcard_popup_frame_2 h2, .dragcard_popup_frame_3 h2, .subtasks_popup h2 {
+        font-size: 18px;
     }
 
     .dragcard_popup_frame_1 p {
@@ -483,6 +479,10 @@
 
     .assigned_person {
         width: 48%;
+    }
+
+    .edit_btn{
+        width: 40px;
     }
 }
 

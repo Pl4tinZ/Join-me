@@ -54,11 +54,3 @@ function replaceName(activeUser) {
 function replaceDayTimeInSummary() {
     document.getElementById('dayTime').innerHTML = greetingTime;
 }
-
-/**
- * fill the actually user in the greeting on board page
- * @param {string} activeUser - logged user
- */
-function replaceNameInSummary(activeUser) {
-    document.getElementById('greeting_Name').innerHTML = activeUser;
-}

@@ -173,7 +173,7 @@ function addTaskPopupWindowContent() {
     <div class="tasks_content">
         <div class="left_task">
             <div class="title">
-                <p>Title</p>
+                <p>Title*</p>
                 <input type="text" placeholder="Enter a title" id="title" required>
             </div>
             <div class="description">
@@ -191,7 +191,7 @@ function addTaskPopupWindowContent() {
                 <input id="color_picker" type="color">
             </div>
             <div class="margin-top50">
-                <p>Assignet to</p>
+                <p>Assigned to*</p>
             </div>
             <select class="select_assign" id="select_assign" placeholder="Assignet to" onchange="addAssign()" required>
                 <!-- JAVASCRIPT -->
@@ -203,11 +203,11 @@ function addTaskPopupWindowContent() {
         </div>
         <div class="right-task">
             <div class="date">
-                <p>Due date</p>
+                <p>Due date*</p>
                 <input type="date" placeholder="dd/mm/yyyy" id="date" required>
             </div>
             <div class="prio">
-                <p>Prio</p>
+                <p>Prio*</p>
                 <div class="devision" id="devision">
                     <div onclick="changeImgUrgent()" class="urgent"><img id="urgent" src="img/Urgentbuttonwhite.png"></div>
                     <div onclick="changeImgMedium()" class="medium"><img id="medium" src="img/mediumbuttonwhite.png"></div>
@@ -320,7 +320,7 @@ function popUpContent(id) {
             <img src="img/${element['prio']}button.png">
         </div>
         <div class="dragcard_popup_frame_3">
-            <h2>Assignet To:</h2>
+            <h2>Assigned To:</h2>
         </div>
         <div class="dragcard_popup_frame_4" id="dragcardPopupListning">
             <div class="underframe1" id="taskAssignContainer">

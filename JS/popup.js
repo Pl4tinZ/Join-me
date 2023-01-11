@@ -132,10 +132,7 @@ function fillInputfields(firstname, lastname, email, phone) {
  function openAddTaskPopup(progress) {
     taskProgress = progress;
     document.querySelector('.addtask_popup').classList.remove('d-none');
-    document.querySelector('.blur_container').style = "filter: blur(5px);";
-    document.querySelector('.profilebar').style = "filter: blur(5px);";
-    document.querySelector('.menu').style = "filter: blur(5px);";
-    document.querySelector('.blur_container').classList.add('hidden');
+    blurBackground();
     loadAddTaskPopupWindow();
     checkMediaforBoard(mediaforBoard);
     renderAddTask();
@@ -155,15 +152,32 @@ function closeAddTaskPopup() {
         document.querySelector('.addtask_popup').classList.remove('popup_window_slidein');
         setTimeout(() => {
             document.querySelector('.addtask_popup').classList.add('d-none');
-            document.querySelector('.blur_container').style = "filter: none;";
-            document.querySelector('.blur_container').classList.remove('hidden');
-            document.querySelector('.menu').style = "filter: none;";
-            document.querySelector('.profilebar').style = "filter: none;";
+            removeBlurBackground();
             document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
             document.querySelector('.board_content').classList.remove('d-none');
             document.querySelector('.addtask_popup').style.position = 'absolute';
         }, 300);
     }
+}
+
+/**
+ * hide the backgroundparts
+ */
+function blurBackground() {
+    document.querySelector('.blur_container').style = "filter: blur(5px);";
+    document.querySelector('.profilebar').style = "filter: blur(5px);";
+    document.querySelector('.menu').style = "filter: blur(5px);";
+    document.querySelector('.blur_container').classList.add('hidden');
+}
+
+/**
+ * show the backgroundparts
+ */
+function removeBlurBackground() {
+    document.querySelector('.blur_container').style = "filter: none;";
+    document.querySelector('.blur_container').classList.remove('hidden');
+    document.querySelector('.menu').style = "filter: none;";
+    document.querySelector('.profilebar').style = "filter: none;";
 }
 
 /**
@@ -189,6 +203,7 @@ function loadAddTaskPopupWindow() {
  */
 function openPopUp(id) {
     id = getPositionInTaks(id);
+    blurBackground();
     document.getElementById('popUpArea').classList.remove('d-none');
     document.getElementById('boardContentParent').classList.add('hidden');
     document.getElementById('popUpArea').innerHTML = '';
@@ -206,6 +221,7 @@ function closePopUp() {
     document.getElementById('popUpArea').classList.add('d-none');
     document.querySelector('.board_content').classList.remove('d-none');
     document.getElementById('boardContentParent').classList.remove('hidden');
+    removeBlurBackground();
 }
 
 /**
