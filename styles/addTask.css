@@ -728,6 +728,7 @@
     .subtasks,
     .devision,
     .task_buttons,
+    .new_category_container,
     .left_task {
         width: 300px;
     }
@@ -751,6 +752,12 @@
     }
     .subtask_container {
         width: 300px;
+    }
+    .visual_assign {
+        width: 300px;
+        height: 30px;
+        white-space: nowrap;
+        overflow-x: scroll;
     }
 }
 
@@ -946,7 +953,7 @@
         height: 500px;
     }
     
-    .title input, .select_task, .select_assign, .date input, .subtask {
+    .title input, .select_task, .select_assign, .date input, .subtask, .new_category_container {
         height: 40px;
         padding: 8px;
     }

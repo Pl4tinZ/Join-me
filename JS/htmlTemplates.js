@@ -187,7 +187,7 @@ function addTaskPopupWindowContent() {
                 <!-- JAVASCRIPT -->
             </select>
             <div class="new_category_container dNone" id="new_category_container">
-                <input class="new_category_input" id="new_category" placeholder="type in new category">
+                <input class="new_category_input" id="new_category" placeholder="Type in new category">
                 <input id="color_picker" type="color">
             </div>
             <div class="margin-top50">
