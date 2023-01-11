@@ -712,6 +712,10 @@
 .close_addtask_popup img {
     width: 40px;
 }
+
+.subtask_container_add_task {
+    display: flex;
+}
   
 
 
@@ -758,6 +762,10 @@
         height: 30px;
         white-space: nowrap;
         overflow-x: scroll;
+        flex-wrap: nowrap;
+    }
+    .assigned_person {
+        width: unset;
     }
 }
 
@@ -858,6 +866,9 @@
         width: 150px;
     }
     .prio {
+        width: 100%;
+    }
+    .visual_assign {
         width: 100%;
     }
 }

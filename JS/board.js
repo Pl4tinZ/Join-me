@@ -137,7 +137,7 @@ async function fillInCategory() {
             const element = categories[j];
             if (category == element[['name']]) {
                 let color = element['color'];
-                categoryContainer.style.backgroundColor = color;
+                if (categoryContainer) {categoryContainer.style.backgroundColor = color;}
             }
         }
     }

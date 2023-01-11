@@ -163,6 +163,7 @@ async function checkEditedContactAndSave(firstName, secondName, newFirstName, ne
         successAnimationForEditContact();
         getInfoFromNewContactField();
         showFullContactInfo(contactID);
+        if (mediaforBoard.matches) {showFullContactInfoMobile(contactID)};
     }
 }
 

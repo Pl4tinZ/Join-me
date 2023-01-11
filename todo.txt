@@ -1,9 +1,4 @@
-new category add tasks input anpassen und nicht nach mockup + playceholter first letter big
-add task assigned to overflow x scroll & nicht nach mockup
-add task add subtask with checkbox
-close contact info mobile button wrong position
-contact info edit button wrong position
-edit contact dont work in mobile version
-darauf achten welche seiten wo eingebunden sind und unnötiges raus löschen
+
 
 https://www.figma.com/file/3qlJ22yFozngW2gdOfczMe/Join-Version-1-(Final-version)
+https://dennis-frese.developerakademie.net/Join/contacts.html

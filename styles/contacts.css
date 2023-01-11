@@ -390,7 +390,7 @@
     }
 
     .contact_name_container {
-        width: 200px;
+        width: 80%;
         height: 100px;
         justify-content: flex-start;
         margin-left: 25px;
@@ -446,7 +446,7 @@
     .edit_contact {
         position: absolute;
         right: 20px;
-        bottom: 20px;
+        bottom: 40px;
     }
 
     .edit_contact p {
@@ -464,21 +464,24 @@
 
 @media(max-width: 400px) {
     .contact_name_container {
-        width: 250px;
+        width: 200px;
         height: 80px;
     }
     .contact_name {
         width: 124px;
     }
     .contact_name_container span {
-        width: 60px;
-        height: 60px;
+        width: 45px;
+        height: 45px;
     }
     .contact_name h3 {
-        font-size: 20px;
+        font-size: 14px;
     }
     .contact_name_container p {
-        font-size: 10px;
+        font-size: 8px;
+    }
+    .first_name_letter h3 {
+        margin-top: 8px;
     }
 }
 

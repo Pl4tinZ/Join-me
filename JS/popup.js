@@ -41,11 +41,9 @@ function closeNewContactWindow(succesAnimationContact) {
 function showFullContactInfoMobile(i) {
     if(mediaforBoard.matches) {
         let contactInfoContainer = document.getElementById('cotact_info_mobile');
-        let editBtn = document.getElementById('edit_btn');
         contactInfoContainer.classList.remove('d-none');
         contactInfoContainer.innerHTML = '';
         contactInfoContainer.innerHTML = contactInfoMobile(i);
-        editBtn.src = 'img/edit button.png';
     }
 }
 
@@ -54,7 +52,7 @@ function showFullContactInfoMobile(i) {
  */
 function closeContactInfoMobile() {
     let contactInfoContainer = document.getElementById('cotact_info_mobile');
-    contactInfoContainer.classList.remove('d-none');
+    contactInfoContainer.classList.add('d-none');
 } 
 
 /**
@@ -81,6 +79,7 @@ function openEditContactPopup() {
     document.body.style.overflow = 'hidden';
     setTimeout(() => {
         document.getElementById('popupEditContact').style = "transform: translateX(0vw)";
+        document.getElementById('popupEditContact').style.position = 'fixed';
     }, 300);
 }
 
@@ -100,6 +99,7 @@ function closeEditContactPopup(succesAnimationContact) {
         document.getElementById('popupEditContact').classList.add('d-none');
         document.getElementById('contactsContainer').style = "filter: none;";
         document.getElementById('popupEditContact').style = "transform: translateX(100vw)";
+        document.getElementById('popupEditContact').style.position = 'absolute';
     }, 300);
 }
 
@@ -132,7 +132,7 @@ function fillInputfields(firstname, lastname, email, phone) {
  function openAddTaskPopup(progress) {
     taskProgress = progress;
     document.querySelector('.addtask_popup').classList.remove('d-none');
-    blurBackground();
+    if (!mediaforBoard.matches) {blurBackground()};
     loadAddTaskPopupWindow();
     checkMediaforBoard(mediaforBoard);
     renderAddTask();
@@ -154,7 +154,7 @@ function closeAddTaskPopup() {
             document.querySelector('.addtask_popup').classList.add('d-none');
             removeBlurBackground();
             document.querySelector('.addtask_popup').style = "transform: translateX(100vw)";
-            document.querySelector('.board_content').classList.remove('d-none');
+            if(document.querySelector('.board_content')) {document.querySelector('.board_content').classList.remove('d-none');}
             document.querySelector('.addtask_popup').style.position = 'absolute';
         }, 300);
     }

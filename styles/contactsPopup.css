@@ -298,6 +298,12 @@
     outline: none;
 }
 
+.exit_contact_info {
+    position: absolute;
+    top: 34px;
+    right: 34px;
+}
+
 @media(max-width: 1250px) {
     .popup_window {
         width: 950px;

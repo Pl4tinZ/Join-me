@@ -247,7 +247,11 @@ function addTaskPopupWindowContent() {
  * @returns - HTML
  */
 function subtaskHtml(i) {
-    return /*html*/`<div>${subtask[i]}</div>`;
+    return /*html*/`
+    <div class="subtask_container_add_task">
+        <input type="checkbox" id="checkbox${i}" value="${subtask[i]}">
+        <div id="subtask${i}">${subtask[i]}</div>
+    </div>`;
 }
 
 // ------------------------------------------------------------------------ board ------------------------------------------------------------------------ //

@@ -86,6 +86,7 @@ async function createTask() {
     let assign = document.getElementById('select_assign');
     let date = document.getElementById('date');
     let category = checkCategoryInput();
+    subtask = checkSubTaskAddTask();
     let taskCard;
     if (!checkInputs(title, date)) {
         checkIfNewCategory(category);
@@ -127,6 +128,20 @@ function createNewTaskCard(title, description, date, category, taskCard) {
         "initials": initialsForTaskCard,
     }
     return taskCard;
+}
+
+/**
+ * - Check which subtasks are checked
+ * @returns - Array with checked subtasks
+ */
+function checkSubTaskAddTask() {
+    let checkArr = [];
+    for (let i = 0; i < subtask.length; i++) {
+        let checkbox = document.getElementById(`checkbox${i}`);
+        let subTaskValue = checkbox.value;
+        if (checkbox.checked) {checkArr.push(subTaskValue)}
+    }
+    return checkArr;
 }
 
 /**
