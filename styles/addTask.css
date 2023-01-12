@@ -17,7 +17,7 @@
     background: #F6F7F8;
 }
 
-.addtask h1 {
+.add_task h1 {
     width: 466px;
     height: 78px;
     font-family: 'Inter';
@@ -781,7 +781,7 @@
         position: unset;
         margin-bottom: 80px;
     }
-    .addtask h1 {
+    .add_task h1 {
         margin-top: 24px;
         margin: 0 !important;
     }
@@ -882,7 +882,7 @@
         width: 100px;
     }
 
-    .addtask h1 {
+    .add_task h1 {
         width: 100%;
     }
 }
@@ -893,7 +893,7 @@
         font-size: 14px;
     }
 
-    .addtask h1 {
+    .add_task h1 {
         font-size: 40px;
         height: unset;
     }
@@ -917,7 +917,7 @@
         flex-direction: column;
     }
 
-    .addtask h1 {
+    .add_task h1 {
         margin-top: 130px;
     }
 
@@ -947,7 +947,7 @@
         flex-direction: column;
     }
 
-    .addtask h1 {
+    .add_task h1 {
         margin-top: 110px;
         margin-left: 300px;
     }

@@ -15,8 +15,7 @@
     justify-content: center;
     align-items: flex-start;
     width: 200px;
-    margin-right: 3%;
-    margin-left: 30px;
+    overflow: hidden;
 }
 
 .contact_name p {
@@ -29,17 +28,15 @@
 
 .contact_name_container {
     display: flex;
-    width: 370px;
-    height: 120px;
-    justify-content: space-between;
+    height: 100px;
     align-items: center;
     cursor: pointer;
 }
 
 .contact_name_container span {
-    width: 70px;
-    height: 70px;
-    margin-left: 10%;
+    width: 42px;
+    height: 42px;
+    margin: 0 24px;
     padding: 10px;
     font-size: 20px !important;
     color: black !important;
@@ -54,15 +51,24 @@
     font-size: 16px;
 }
 
+.contact_name h3 {
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.first_name_letter img {
+    margin-bottom: 8px;
+}
+
 .full_listner {
     display: flex;
     align-items: center;
+    border-radius: 10px;
 }
 
 .full_listner img {
     width: 20px;
     height: 20px;
-    margin-left: 16px;
     cursor: pointer;
 }
 
@@ -80,6 +86,7 @@
     background-color: white;
     overflow-y: scroll;
     scrollbar-width: thin;
+    padding: 0 48px;
 }
 
 .listning::-webkit-scrollbar {
@@ -296,6 +303,16 @@
     margin-bottom: 30px;
 }
 
+.letter_row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.active_contact {
+    background-color: #091931;
+}
+
 @media(max-width: 1400px) {
     .right_side {
         left: calc(232px + 350px);
@@ -304,35 +321,29 @@
         width: 350px;
     }
     .contact_name_container {
-        height: 100px;
+        height: 80px;
         width: 260px;
         overflow-x: hidden;
     }
-    .contact_name_container span {
-        width: 50px;
-        height: 50px;
-    }
     .contact_name_container p {
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .contact_name_container span {
+        margin: 0 16px;
     }
     .contact_name h3 {
-        font-size: 20px;
+        font-size: 16px;
+    }
+    .full_listner img {
+        margin-right: 8px;
     }
 }
 
 @media(max-width: 1250px) {
-    .right_side {
-        left: calc(232px + 250px);
-    }
-    .listning {
-        width: 250px;
-    }
     .contact_name {
         margin-left: 10px;
     }
     .contact_name_container {
-        height: 70px;
-        width: 160px;
         overflow-x: hidden;
         margin-right: 8px;
     }
@@ -352,14 +363,17 @@
         margin-left: 8px;
     }
     .right_side_contacts {
-        width: 400px;
+        width: 330px;
+        margin-bottom: 30px;
     }
     .full_contact_info h2 {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        font-size: 32px;
     }
     .right_side_contacts p {
-        font-size: 50px;
+        font-size: 40px;
+        height: unset;
     }
     .right_side_contacts h4 {
         font-size: 16px;
@@ -369,7 +383,19 @@
         width: calc(100% - 20px);
     }
     .contact_information h2 {
-        font-size: 22px;
+        font-size: 21px;
+    }
+    .full_contact_info h1 {
+        font-size: 32px;
+    }
+    .contact_information_header h2 {
+        font-size: 21px;
+    }
+    .edit_contact p {
+        font-size: 14px;
+    }
+    .edit_contact img {
+        width: 12px;
     }
 }
 

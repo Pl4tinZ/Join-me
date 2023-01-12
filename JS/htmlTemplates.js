@@ -85,12 +85,12 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
             <h3>${firstsecondnameLetter}</h3>
             <img src="img/line.png">
         </div>
-        <div id="${firstsecondnameLetter}">
-            <div class="full_listner">
+        <div id="${firstsecondnameLetter}" class="letter_row">
+            <div class="full_listner" id="full_listner_${i}">
                 <div class="contact_name_container" onclick="showFullContactInfo(${i}); showFullContactInfoMobile(${i});">
                     <span style="background-color:${getColorForName(initials)}">${initials}</span>
                     <div class="contact_name">
-                    <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+                    <h3 id="name${i}">${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
                     <a href="#"><p>${contacts[i]['email']}</p></a>
                     </div>
                 </div>
@@ -109,11 +109,11 @@ function letterNotExist(i, initials, firstsecondnameLetter) {
  */
 function letterAlreadyExist(i, initials) {
     return /*html*/`
-    <div class="full_listner">
+    <div class="full_listner" id="full_listner_${i}">
         <div class="contact_name_container" onclick="showFullContactInfo(${i}); showFullContactInfoMobile(${i});">
             <span style="background-color:${getColorForName(initials)}">${initials}</span>
             <div class="contact_name">
-            <h3>${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
+            <h3 id="name${i}">${contacts[i]['first_name']} ${contacts[i]['second_name']}</h3>
             <a href="#"><p>${contacts[i]['email']}</p></a>
             </div>
         </div>

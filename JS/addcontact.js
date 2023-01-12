@@ -100,6 +100,7 @@ function showFullContactInfo(i) {
     let fullContactInfo = document.getElementById('full_contact_Info_Container');
     fullContactInfo.innerHTML = '';
     fullContactInfo.innerHTML += contactInfo(i);
+    activateContact(i);
 }
 
 /**
@@ -222,6 +223,22 @@ function successAnimationForEditContact() {
     let succesAnimationContact = document.getElementById('success_animation_contact');
     succesAnimationContact.classList.remove('d-none');
     setTimeout(() => {closeEditContactPopup(succesAnimationContact)}, "1300");
+}
+
+/**
+ * - highlight the selected contact
+ * @param {number} id - position of contact in Array, contacts
+ */
+function activateContact(id) {
+    for (let i = 0; i < contacts.length; i++) {
+        let element = document.getElementById(`full_listner_${i}`);
+        if (element.classList.contains('active_contact')) {
+            element.classList.remove('active_contact');
+            document.getElementById(`name${i}`).style.color = 'black';
+        }
+    }
+    document.getElementById(`full_listner_${id}`).classList.add('active_contact');
+    document.getElementById(`name${id}`).style.color = 'white';
 }
 
 /**

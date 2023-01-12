@@ -28,4 +28,5 @@ function includeHTML() {
             return;
         }
     }
+    activeMenu();
 }

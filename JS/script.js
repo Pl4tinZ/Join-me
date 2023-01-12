@@ -39,6 +39,21 @@ function openProfilInformationPopUp() {
     }
 }
 
+function activeMenu() {
+    let pages = ['summary.html', 'board.html', 'addtask.html', 'contacts.html', 'legalnotice.html'];
+
+    for (let i = 0; i < pages.length; i++) {
+        const page = pages[i];
+        const url = `https://dennis-frese.developerakademie.net/Join/${page}`;
+        let className = page.substring(0,page.length-5);
+        let container = document.querySelector(`.${className}`)
+
+        if (location.href == url) {
+            container.classList.add('active_menu');
+        }
+    }
+}
+
 /**
  * logout current user and go to index
  */

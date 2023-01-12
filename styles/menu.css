@@ -32,7 +32,7 @@
     text-decoration: none;
 }
 
-.summary, .board, .add_task, .contacts, .legal_notice {
+.summary, .board, .addtask, .contacts, .legalnotice {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,7 +65,7 @@
     font-size: 16px;
 }
 
-.legal {
+.legal_notice {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -76,7 +76,7 @@
     margin-bottom: 10%;
 }
 
-.legal_notice {
+.legalnotice {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -87,12 +87,12 @@
     cursor: pointer;
 }
 
-.legal_notice:hover {
+.legalnotice:hover {
     background-color: #344459;
     transition: all 125ms ease-in-out;
 }
 
-.legal_notice a {
+.legalnotice a {
     color: #cdcdcd;
     text-decoration: none;
     font-weight: 400;
@@ -100,7 +100,7 @@
     line-height: 120%;
 }
 
-.legal_notice a:hover {
+.legalnotice a:hover {
     color: #cdcdcd;
 }
 
@@ -130,7 +130,7 @@
     .menu_logo {
         display: none;
     }
-    .legal {
+    .legal_notice {
         display: none;
     }
     .dashboard {

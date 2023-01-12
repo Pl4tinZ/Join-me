@@ -367,6 +367,10 @@ body::-webkit-scrollbar {
     transition: all 225ms;
 }
 
+.active_menu {
+    background-color: #091931;
+}
+
 
 /* ---------------------- MEDIA QUERYS ---------------------- */
 
