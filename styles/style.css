@@ -1,3 +1,7 @@
+:root {
+    color-scheme: only light;
+  }
+
 body {
     margin: 0;
     background-color: #F6F7F8 !important;

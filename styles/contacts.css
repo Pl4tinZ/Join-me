@@ -475,6 +475,10 @@
         bottom: 40px;
     }
 
+    .edit_contact img {
+        width: 60px;
+    }
+
     .edit_contact p {
         display: none;
     }
